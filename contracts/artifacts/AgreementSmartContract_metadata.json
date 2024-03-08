@@ -99,11 +99,11 @@
 	},
 	"sources": {
 		"contracts/AgreementSmartContract.sol": {
-			"keccak256": "0xba081da4070ac43b97ac4edd6c39a42ce709fe48e6b3c85919eb4a277946a1c3",
+			"keccak256": "0x3625f9825578e16177577a35a783ab40bbbf9d0e58d3d54e9bd81b8675f4d945",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://650ba0005d1da4d8bca42610223add151c155794bb445eaa5e7ceddcc631b42d",
-				"dweb:/ipfs/QmZF4BXFBaPbKkMEkru7FiMiMpXe2QR2gDS1Cnsm5cnSHG"
+				"bzz-raw://dca90bd6429ae724a1e5d6c6a4ebf9f8c88c47c17532fdc904b2befbba63c1e1",
+				"dweb:/ipfs/QmRF4wKWYBABZBjTSMPxqaXY9CnQKuEuKMhSedCw9NZWsw"
 			]
 		}
 	},

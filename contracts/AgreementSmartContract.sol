@@ -13,5 +13,6 @@ contract AgreementSmartContract {
     function addAgreement(bytes32 _purposeBlockHash, uint _userID, bool _consent) public {
         agreements[agreementCount] = Agreement(_purposeBlockHash, _userID, _consent);
         agreementCount++;
+        
     }
 }
