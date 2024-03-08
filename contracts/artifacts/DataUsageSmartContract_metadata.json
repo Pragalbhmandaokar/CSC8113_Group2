@@ -1,0 +1,126 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_actorID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_serviceName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_servicePurpose",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_operation",
+						"type": "string"
+					},
+					{
+						"internalType": "string[]",
+						"name": "_personalData",
+						"type": "string[]"
+					}
+				],
+				"name": "addDataUsage",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "dataUsageCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "dataUsages",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "actorID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "serviceName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "servicePurpose",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "operation",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/DataUsageSmartContract.sol": "DataUsageSmartContract"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/DataUsageSmartContract.sol": {
+			"keccak256": "0x33f5cd6a591483ad6a045630557873b307b7b93d77f071e1679d482e4ff127aa",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c452dc5542b20a8f338bf4eb103a8e6bef10652376e0b4e8f6bfb0d7cb5c8a34",
+				"dweb:/ipfs/QmUwKPs2T51R21FQkZsXui93S16jpgw5Dy84GbYi95LmKb"
+			]
+		}
+	},
+	"version": 1
+}
