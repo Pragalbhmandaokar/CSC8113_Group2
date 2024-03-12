@@ -69,6 +69,19 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAgreementsLength",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -99,11 +112,11 @@
 	},
 	"sources": {
 		"contracts/AgreementSmartContract.sol": {
-			"keccak256": "0xba081da4070ac43b97ac4edd6c39a42ce709fe48e6b3c85919eb4a277946a1c3",
+			"keccak256": "0x9dfb9ad5b766e6d27460890040fa48e5f483afd9d86c9c463e16935df5b9ad6f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://650ba0005d1da4d8bca42610223add151c155794bb445eaa5e7ceddcc631b42d",
-				"dweb:/ipfs/QmZF4BXFBaPbKkMEkru7FiMiMpXe2QR2gDS1Cnsm5cnSHG"
+				"bzz-raw://74ed41fe7c53d23ae8102c94b67847a4513e9b3f70834852ef4027e7006af864",
+				"dweb:/ipfs/QmX8fxGKD7kyn5RFZUE9WS4yqpjtpdMDC8r7d7W6mjy64F"
 			]
 		}
 	},
