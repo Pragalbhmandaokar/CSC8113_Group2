@@ -10,7 +10,7 @@ contract DataUsageContract {
         string personalData;
     }
 
-    DataUsage[] public dataUsages;
+    DataUsage[] public dataUsages; // can use other data structures to optimize gas cost.
 
     function addDataUsage(
         address _actor,

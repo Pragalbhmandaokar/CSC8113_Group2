@@ -8,9 +8,9 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "_actor",
-						"type": "address"
+						"internalType": "uint256",
+						"name": "_actorID",
+						"type": "uint256"
 					},
 					{
 						"internalType": "string",
@@ -28,9 +28,9 @@
 						"type": "string"
 					},
 					{
-						"internalType": "string",
+						"internalType": "string[]",
 						"name": "_personalData",
-						"type": "string"
+						"type": "string[]"
 					}
 				],
 				"name": "addDataUsage",
@@ -49,9 +49,9 @@
 				"name": "dataUsages",
 				"outputs": [
 					{
-						"internalType": "address",
-						"name": "actor",
-						"type": "address"
+						"internalType": "uint256",
+						"name": "actorID",
+						"type": "uint256"
 					},
 					{
 						"internalType": "string",
@@ -66,11 +66,6 @@
 					{
 						"internalType": "string",
 						"name": "operation",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "personalData",
 						"type": "string"
 					}
 				],
@@ -81,36 +76,16 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "_index",
+						"name": "index",
 						"type": "uint256"
 					}
 				],
-				"name": "getDataUsage",
+				"name": "getPurposeHash",
 				"outputs": [
 					{
-						"internalType": "address",
-						"name": "actor",
-						"type": "address"
-					},
-					{
-						"internalType": "string",
-						"name": "serviceName",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "servicePurpose",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "operation",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "personalData",
-						"type": "string"
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
 					}
 				],
 				"stateMutability": "view",
@@ -130,7 +105,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/1_DataUsage.sol": "DataUsageContract"
+			"contracts/DataUsageSmartContract.sol": "DataUsageSmartContract"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -144,12 +119,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/1_DataUsage.sol": {
-			"keccak256": "0x90d448e252c41d852e61fed1fa5baeb3f7a834bef421a99cb1a2a6b1607e3231",
-			"license": "GPL-3.0",
+		"contracts/DataUsageSmartContract.sol": {
+			"keccak256": "0xe9fb278100bd796a13cf757d1b75422699b646ed822a934f88d6bd1ab8206965",
+			"license": "MIT",
 			"urls": [
-				"bzz-raw://88452d7abcfbadb20a66c8ca4682540dbea06e3aa88a731be169c510b6d040b9",
-				"dweb:/ipfs/QmZxhm1Y43i8Rs24mH4rrkcg2HBak3FUDpEt4aidbHJJfo"
+				"bzz-raw://5bd952211c570445a2801ade7b05151b33cc01a05f2c1cf3059479428fe78f27",
+				"dweb:/ipfs/QmU1ro4yKUGSatgUsMEM8PbnQgd9cjnUdTud9pg7fghcow"
 			]
 		}
 	},
