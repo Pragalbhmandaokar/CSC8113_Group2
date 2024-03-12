@@ -35,7 +35,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "logCount",
+				"name": "getLogsLength",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -109,11 +109,11 @@
 	},
 	"sources": {
 		"contracts/LogSmartContract.sol": {
-			"keccak256": "0x39b9163367d906a790303f32cdb8ec70ffd6b46df7d78cb2ab377b72e5d5ba7b",
+			"keccak256": "0x2381cbebf23ca3bf4085af3b13a02e9203d8739e66c92c05f439c94bf220bdb6",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2b3e8e0537f17b676d5bd54856b648c45c09e2a7ae35cb223076ecfa9de31ad3",
-				"dweb:/ipfs/QmSPDwFR9xQ7GBC4EZ8xmqL77UuhZCTiN6due3kqQNapwR"
+				"bzz-raw://162c25612db797f3ec9a7567b5299be5d00e0d544aae3a10c987d69f2782b01f",
+				"dweb:/ipfs/QmcxxqSUq54ny6qEtN1YaZ3uCVSGHULsgxJrLbfjNHwj3F"
 			]
 		}
 	},

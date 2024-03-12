@@ -1,0 +1,143 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_dataUsageContract",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_agreementContract",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_logContract",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "agreementContract",
+				"outputs": [
+					{
+						"internalType": "contract AgreementSmartContract",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "checkViolations",
+				"outputs": [
+					{
+						"internalType": "string[]",
+						"name": "violators",
+						"type": "string[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "dataUsageContract",
+				"outputs": [
+					{
+						"internalType": "contract DataUsageSmartContract",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "logContract",
+				"outputs": [
+					{
+						"internalType": "contract LogSmartContract",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Verification.sol": "Verification"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/AgreementSmartContract.sol": {
+			"keccak256": "0x9dfb9ad5b766e6d27460890040fa48e5f483afd9d86c9c463e16935df5b9ad6f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://74ed41fe7c53d23ae8102c94b67847a4513e9b3f70834852ef4027e7006af864",
+				"dweb:/ipfs/QmX8fxGKD7kyn5RFZUE9WS4yqpjtpdMDC8r7d7W6mjy64F"
+			]
+		},
+		"contracts/DataUsageSmartContract.sol": {
+			"keccak256": "0xe9fb278100bd796a13cf757d1b75422699b646ed822a934f88d6bd1ab8206965",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5bd952211c570445a2801ade7b05151b33cc01a05f2c1cf3059479428fe78f27",
+				"dweb:/ipfs/QmU1ro4yKUGSatgUsMEM8PbnQgd9cjnUdTud9pg7fghcow"
+			]
+		},
+		"contracts/LogSmartContract.sol": {
+			"keccak256": "0x1171aa9ea15ebe03867f348e57e578f95668be242273b1525693a848ea0c9c60",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://00f0c264a2445a62b3fd4ab4f49d021dcd66cdb4c20652f7b5795f0730cb8c3c",
+				"dweb:/ipfs/QmVji8oasybHQ7zKfSKfTMd9cgJipZFf2vbMtA8nxLiTaw"
+			]
+		},
+		"contracts/Verification.sol": {
+			"keccak256": "0xa1203d66d7f219312b863c8a6b109a296f9b0cdab4adad4cec23346335fe694c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://efed62b9fcce0ad5dcfe1c45ac4d8f8d9887c973a9603c73f4198f0eb6037abb",
+				"dweb:/ipfs/QmQPYwrwYknQZ1sWvViHVP72QBPXkquKRc2RcU9wL6u6zJ"
+			]
+		}
+	},
+	"version": 1
+}

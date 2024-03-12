@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
+
 contract DataUsageSmartContract {
     struct DataUsage {
         uint actorID;
@@ -8,13 +9,19 @@ contract DataUsageSmartContract {
         string operation;
         string[] personalData;
     }
-    
-    mapping(uint => DataUsage) public dataUsages;
-    uint public dataUsageCount;
-    //array [] = {}
+
+    DataUsage[] public dataUsages;
+    // mapping(uint => DataUsage) public dataUsages;
+  
+    //Array [] = {}
     function addDataUsage(uint _actorID, string memory _serviceName, string memory _servicePurpose, string memory _operation, string[] memory _personalData) public {
-        dataUsages[dataUsageCount] = DataUsage(_actorID, _serviceName, _servicePurpose, _operation, _personalData);
-        dataUsageCount++;
+        dataUsages.push(DataUsage(_actorID, _serviceName, _servicePurpose, _operation, _personalData));
     }
+
+     function getPurposeHash(uint index) public view returns (bytes32) {
+        return keccak256(abi.encodePacked(dataUsages[index].actorID, dataUsages[index].serviceName));
+    }
+    
 }
 
+// Array [] = { } 

@@ -39,19 +39,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "dataUsageCount",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -80,6 +67,25 @@
 						"internalType": "string",
 						"name": "operation",
 						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "getPurposeHash",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
 					}
 				],
 				"stateMutability": "view",
@@ -114,11 +120,11 @@
 	},
 	"sources": {
 		"contracts/DataUsageSmartContract.sol": {
-			"keccak256": "0x33f5cd6a591483ad6a045630557873b307b7b93d77f071e1679d482e4ff127aa",
+			"keccak256": "0xe9fb278100bd796a13cf757d1b75422699b646ed822a934f88d6bd1ab8206965",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c452dc5542b20a8f338bf4eb103a8e6bef10652376e0b4e8f6bfb0d7cb5c8a34",
-				"dweb:/ipfs/QmUwKPs2T51R21FQkZsXui93S16jpgw5Dy84GbYi95LmKb"
+				"bzz-raw://5bd952211c570445a2801ade7b05151b33cc01a05f2c1cf3059479428fe78f27",
+				"dweb:/ipfs/QmU1ro4yKUGSatgUsMEM8PbnQgd9cjnUdTud9pg7fghcow"
 			]
 		}
 	},
