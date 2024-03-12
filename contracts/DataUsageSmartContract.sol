@@ -18,7 +18,7 @@ contract DataUsageSmartContract {
         dataUsages.push(DataUsage(_actorID, _serviceName, _servicePurpose, _operation, _personalData));
     }
 
-     function getPurposeHash(uint index) public view returns (bytes32) {
+    function getPurposeHash(uint index) public view returns (bytes32) {
         return keccak256(abi.encodePacked(dataUsages[index].actorID, dataUsages[index].serviceName));
     }
     
