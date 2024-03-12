@@ -1,0 +1,141 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_purposeBlockHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_userID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_consent",
+						"type": "bool"
+					}
+				],
+				"name": "addAgreement",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "agreementCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "agreements",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "purposeBlockHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "userID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "consent",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAgreementsLength",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Store and manage user agreements on data usage purposes",
+			"kind": "dev",
+			"methods": {
+				"addAgreement(bytes32,uint256,bool)": {
+					"details": "Record a new agreement in the contract",
+					"params": {
+						"_consent": "The user's consent (true for agree, false for disagree)",
+						"_purposeBlockHash": "The hash of the purpose block related to the agreement",
+						"_userID": "The user's unique identifier"
+					}
+				},
+				"getAgreementsLength()": {
+					"details": "Returns the number of agreements stored in the contract",
+					"returns": {
+						"_0": "The count of agreements"
+					}
+				}
+			},
+			"title": "Agreement Smart Contract",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/AgreementSmartContract.sol": "AgreementSmartContract"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/AgreementSmartContract.sol": {
+			"keccak256": "0xb0793fc727c9947dcd2085f37ef90dd6f022a3197318107c7fe2e0f844bcab9d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://625c5ae0cfdafc3ba0b8c93cbd868da4529f7c9c4dc38c36c55310bda54073fc",
+				"dweb:/ipfs/Qmf5vnefvNwL6zQPtX9PpwJaaAdPxB2BqM9tXdHnAcroeC"
+			]
+		}
+	},
+	"version": 1
+}
