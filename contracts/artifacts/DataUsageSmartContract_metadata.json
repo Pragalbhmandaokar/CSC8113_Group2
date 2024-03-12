@@ -120,11 +120,11 @@
 	},
 	"sources": {
 		"contracts/DataUsageSmartContract.sol": {
-			"keccak256": "0x06400ffc11d064740454082876a0ddedf876cbf824bd13de17fece106ba84529",
+			"keccak256": "0xd5b7ddf84352f71c4dbbbdda5f8a6230581d165564f19b87ed2c9f18f429e05a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://fbaa600cf77e9bdd5ea1fe25636e2a31b6844f43ca7a7d369a2b4001779ffeb3",
-				"dweb:/ipfs/QmVhCx1DbVDi6sUAKKradUX4KwUeesPRVkMjtjS4syu5Tv"
+				"bzz-raw://c88b685a06486a626224dd874f1bd4cb773b4a9bee41ad0439c056bf4978e2d9",
+				"dweb:/ipfs/QmNPVnBZtXaix1EVRWWg17FovboozACzBXdHTAe95h8Xmt"
 			]
 		}
 	},

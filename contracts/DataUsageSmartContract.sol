@@ -22,6 +22,7 @@ contract DataUsageSmartContract {
         return keccak256(abi.encodePacked(dataUsages[index].actorID, dataUsages[index].serviceName));
     }
     
+    
 }
 
 // Array [] = { } 
