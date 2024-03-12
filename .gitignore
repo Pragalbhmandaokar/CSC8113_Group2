@@ -1,5 +1,5 @@
 .git
 .deps
 .prettierrc.json
-contracts/artifacts/*
-contracts/scenarios.json
+/contracts/artifacts/
+/contracts/scenarios.json
