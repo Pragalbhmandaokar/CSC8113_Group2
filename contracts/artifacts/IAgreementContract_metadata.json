@@ -1,0 +1,98 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_purposeBlockHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "_userId",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "_consent",
+						"type": "bool"
+					}
+				],
+				"name": "addAgreement",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "getAgreement",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "purposeBlockHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "userId",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "consent",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/4_Verification.sol": "IAgreementContract"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/4_Verification.sol": {
+			"keccak256": "0x83c57cb5d56067070686ea66635dae6481de0e66b09ff268f48f4717b7101345",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://8a56ba28d9d8f4cd0a719c161bec9b9f4b2c43f7034fcc76b8ba371567852e31",
+				"dweb:/ipfs/QmVUfSpB6DAnJsSLZuzRa9wuhHZ9fKBXZNbhPP7nrBavsd"
+			]
+		}
+	},
+	"version": 1
+}

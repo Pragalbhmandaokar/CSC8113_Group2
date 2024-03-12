@@ -1,0 +1,67 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_dataUsageContract",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_agreementContract",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_logContract",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/4_Verification.sol": "VerificationContract"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/4_Verification.sol": {
+			"keccak256": "0x83c57cb5d56067070686ea66635dae6481de0e66b09ff268f48f4717b7101345",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://8a56ba28d9d8f4cd0a719c161bec9b9f4b2c43f7034fcc76b8ba371567852e31",
+				"dweb:/ipfs/QmVUfSpB6DAnJsSLZuzRa9wuhHZ9fKBXZNbhPP7nrBavsd"
+			]
+		}
+	},
+	"version": 1
+}

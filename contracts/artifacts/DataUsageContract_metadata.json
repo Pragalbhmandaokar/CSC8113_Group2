@@ -1,0 +1,157 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_actor",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_serviceName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_servicePurpose",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_operation",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_personalData",
+						"type": "string"
+					}
+				],
+				"name": "addDataUsage",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "dataUsages",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "actor",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "serviceName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "servicePurpose",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "operation",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "personalData",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "getDataUsage",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "actor",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "serviceName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "servicePurpose",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "operation",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "personalData",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/1_DataUsage.sol": "DataUsageContract"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/1_DataUsage.sol": {
+			"keccak256": "0xa6f1135357a77125870f2395a0d69c3885a9ddcfbfe6d5ba262ff2d65691c158",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://cc2d64f02f0003b204d80b97cdb60ce945512725ceb83338e00879aebdb1fd7c",
+				"dweb:/ipfs/QmS2wJhB7t2P2tDfqmeFLUwi85CUY8BheWciH3YHxgRxHx"
+			]
+		}
+	},
+	"version": 1
+}

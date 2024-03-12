@@ -1,0 +1,118 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_actor",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_serviceName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_servicePurpose",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_operation",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_personalData",
+						"type": "string"
+					}
+				],
+				"name": "addDataUsage",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "getDataUsage",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "actor",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "serviceName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "servicePurpose",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "operation",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "personalData",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/4_Verification.sol": "IDataUsageContract"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/4_Verification.sol": {
+			"keccak256": "0x83c57cb5d56067070686ea66635dae6481de0e66b09ff268f48f4717b7101345",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://8a56ba28d9d8f4cd0a719c161bec9b9f4b2c43f7034fcc76b8ba371567852e31",
+				"dweb:/ipfs/QmVUfSpB6DAnJsSLZuzRa9wuhHZ9fKBXZNbhPP7nrBavsd"
+			]
+		}
+	},
+	"version": 1
+}

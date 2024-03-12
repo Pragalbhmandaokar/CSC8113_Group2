@@ -1,0 +1,127 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_purposeBlockHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "_userId",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "_consent",
+						"type": "bool"
+					}
+				],
+				"name": "addAgreement",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "agreements",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "purposeBlockHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "userId",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "consent",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "getAgreement",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "purposeBlockHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "userId",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "consent",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/2_Agreement.sol": "AgreementContract"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/2_Agreement.sol": {
+			"keccak256": "0x23e3235f5395134c4af03663154449a9a21a7c10ce4dd1f9131d600566d48ca6",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://2eab316f19ce8e07c858e2d07f01d3fdfac4e1323823b3d93dcd89a3462faac8",
+				"dweb:/ipfs/QmVrGUpr8Qkmih7oA89mBPc1mgookdz4xfnwsKhfQLCWnE"
+			]
+		}
+	},
+	"version": 1
+}

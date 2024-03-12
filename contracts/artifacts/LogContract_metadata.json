@@ -1,0 +1,142 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_actor",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_operation",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_processedData",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_serviceName",
+						"type": "string"
+					}
+				],
+				"name": "addLog",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "getLog",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "actor",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "operation",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "processedData",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "serviceName",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "logs",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "actor",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "operation",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "processedData",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "serviceName",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/3_Log.sol": "LogContract"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/3_Log.sol": {
+			"keccak256": "0xbe0bb7e629874a08aed2522be987f53680063c688bbed93405bdd9dbde4ba40d",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://670b864f0e2eaa4a920d4011625e6f820e4b3873b6afc4002fff53b9b8863703",
+				"dweb:/ipfs/QmXTr3uqRan3VurLEtRGreTzPcktsmAgBnE78ewgShuVUd"
+			]
+		}
+	},
+	"version": 1
+}
