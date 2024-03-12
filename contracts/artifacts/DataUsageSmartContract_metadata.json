@@ -93,8 +93,30 @@
 			}
 		],
 		"devdoc": {
+			"details": "Store and retrieve user data usage details",
 			"kind": "dev",
-			"methods": {},
+			"methods": {
+				"addDataUsage(uint256,string,string,string,string[])": {
+					"details": "Store a new data usage in the contract",
+					"params": {
+						"_actorID": "The actor's unique identifier",
+						"_operation": "The type of operation performed on the data",
+						"_personalData": "The list of personal data items",
+						"_serviceName": "The name of the service processing data",
+						"_servicePurpose": "The purpose for processing the data"
+					}
+				},
+				"getPurposeHash(uint256)": {
+					"details": "Retrieve a hash of the service purpose and actor ID",
+					"params": {
+						"index": "The index of the data usage entry in the array"
+					},
+					"returns": {
+						"_0": "The keccak256 hash of the actorID and serviceName"
+					}
+				}
+			},
+			"title": "Data Usage Smart Contract",
 			"version": 1
 		},
 		"userdoc": {
@@ -120,11 +142,11 @@
 	},
 	"sources": {
 		"contracts/DataUsageSmartContract.sol": {
-			"keccak256": "0xe9fb278100bd796a13cf757d1b75422699b646ed822a934f88d6bd1ab8206965",
+			"keccak256": "0x0eb1cde668a1dd4876a0a53b85c94bfee1222ce41ccf5cd8604cfc66ff45c4ca",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5bd952211c570445a2801ade7b05151b33cc01a05f2c1cf3059479428fe78f27",
-				"dweb:/ipfs/QmU1ro4yKUGSatgUsMEM8PbnQgd9cjnUdTud9pg7fghcow"
+				"bzz-raw://21122cde4de5946aea4b56110ea2e24ce250dd3b1cb0eb6d9294754ea6c8d765",
+				"dweb:/ipfs/QmeWWDuD313dUsVPuWKY8CHvVC45Mc6kWcrNH8jvTtFnaF"
 			]
 		}
 	},
