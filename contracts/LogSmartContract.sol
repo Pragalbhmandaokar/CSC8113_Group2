@@ -70,5 +70,9 @@ contract LogSmartContract is AccessControl {
     function getLogCounter() public view returns (uint) {
         return logCounter;
     }
+
+    function getLogKeys() public view returns (uint[] memory) {
+        return logKeys;
+    }
 }
  

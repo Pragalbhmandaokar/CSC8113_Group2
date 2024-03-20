@@ -103,6 +103,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "getLogKeys",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "owner",
 				"outputs": [
 					{
@@ -159,11 +172,11 @@
 			]
 		},
 		"contracts/LogSmartContract.sol": {
-			"keccak256": "0xfd542acdf43e4ffcc6fe8f365466c7cef6153537c38aa19fb94c3456e76deec3",
+			"keccak256": "0x20bbe7a60f858ee197becd99e7f831a1380e56da9920978f8c2ba7c57ccb5311",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://ed2bfc5ccf2e91c97e1cb9b47971f23e3a151d8c8a1502e313284c6d233ba1eb",
-				"dweb:/ipfs/QmR2WutEc8UVE7VCcrNXnLuAp5BEwNFafJFAwkM2v5GLu2"
+				"bzz-raw://0f1c6f60fe7ea1fce3ec356578f1506cd89d369d7da452cc4c08e3705a7bb79c",
+				"dweb:/ipfs/QmbRc7Qzw5mucwqRjJkAhQ12kw66ECg3eJJ5A1So6AvoMf"
 			]
 		}
 	},

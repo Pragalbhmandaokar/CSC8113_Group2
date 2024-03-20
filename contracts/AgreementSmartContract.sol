@@ -67,4 +67,9 @@ contract AgreementSmartContract is AccessControl {
     function getConsentCounter() public view returns (uint) {
         return consentsCounter;
     }
+
+    function getConsentKeys() public view returns (uint[] memory) {
+        return consentKeys;
+    }
+
 }

@@ -12,7 +12,7 @@ contract Verification is AccessControl {
     AgreementSmartContract private agreementSmartContract;
     LogSmartContract private logSmartContract;
 
-    uint[] private violatorActorIds;                                   // Array to store the IDs of the actors that violated the agreements
+    uint[] private violators;                                   // Array to store the IDs of the actors that violated the agreements
 
     constructor(
         address _dataUsageSmartContractAddress,
@@ -30,24 +30,58 @@ contract Verification is AccessControl {
     
 
     function verifyCompliance() public onlyOwner {
-        uint dataUsageCount = dataUsageSmartContract.getDataUsageCounter();
-        
-        for (uint i = 0; i < dataUsageCount; i++) {
-            // Assume the existence of a method in LogSmartContract to get logs by dataUsageId
-            LogSmartContract.Log memory log = logSmartContract.getLogByKey(i);
-            // Assume the existence of a method in AgreementSmartContract to get consent by dataUsageId
-            AgreementSmartContract.Consent memory consent = agreementSmartContract.getConsentByKey(i);
+        uint[] memory logKeys = logSmartContract.getLogKeys();
+        uint[] memory consentKeys = agreementSmartContract.getConsentKeys();
 
-            // Verification logic
-            if(consent.isConsented == false || log.actorId != consent.userId) {
-                // If consent is not given or log's actorId does not match consent's userId, flag as violator
-                violatorActorIds.push(log.actorId);
+        for (uint i = 0; i < logKeys.length; i++) {
+            uint logKey = logKeys[i];
+            LogSmartContract.Log memory log = logSmartContract.getLogByKey(logKey);
+
+            for (uint j = 0; j < consentKeys.length; j++) {
+                uint consentKey = consentKeys[j];
+                if (logKey == consentKey) {
+                    AgreementSmartContract.Consent memory consent = agreementSmartContract.getConsentByKey(consentKey);
+                    DataUsageSmartContract.DataUsage memory dataUsage = dataUsageSmartContract.getDataUsageByKey(logKey);
+
+                    if (!consent.isConsented || log.actorId != consent.userId) {
+                        violators.push(log.actorId);
+                        continue;
+                    }
+
+                    bool isViolation = false;
+                    if(log.operations.length != dataUsage.operations.length) {
+                        isViolation = true;
+                    } else {
+                        for (uint k = 0; k < log.operations.length; k++) {
+                            if (keccak256(abi.encodePacked(log.operations[k])) != keccak256(abi.encodePacked(dataUsage.operations[k]))) {
+                                isViolation = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (!isViolation) {
+                        for (uint l = 0; l < log.processedPersonalDatas.length; l++) {
+                            bytes32 logData = log.processedPersonalDatas[l];
+                            bytes32 consentData = dataUsageSmartContract.getProcessedPersonalDataByKey(dataUsage.personalDataIds[l]);
+                            if (logData != consentData) {
+                                isViolation = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (isViolation) {
+                        violators.push(log.actorId);
+                    }
+                }
             }
         }
     }
 
+
     function getViolators() public view returns (uint[] memory) {
-        return violatorActorIds;
+        return violators;
     }
 }
 
