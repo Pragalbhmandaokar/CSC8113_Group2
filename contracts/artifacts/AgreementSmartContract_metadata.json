@@ -20,35 +20,97 @@
 				"anonymous": false,
 				"inputs": [
 					{
-						"indexed": true,
-						"internalType": "uint256",
-						"name": "userId",
-						"type": "uint256"
-					},
-					{
-						"indexed": true,
+						"indexed": false,
 						"internalType": "uint256",
 						"name": "dataUsageId",
 						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "bool",
-						"name": "isConsent",
-						"type": "bool"
 					}
 				],
 				"name": "ConsentAdded",
 				"type": "event"
 			},
 			{
-				"inputs": [],
-				"name": "dataUsageSmartContract",
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_purposeBlockAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_userId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_dataUsageId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_isConsented",
+						"type": "bool"
+					}
+				],
+				"name": "addConsent",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_dataUsageId",
+						"type": "uint256"
+					}
+				],
+				"name": "getConsentByKey",
 				"outputs": [
 					{
-						"internalType": "contract DataUsageSmartContract",
+						"components": [
+							{
+								"internalType": "address",
+								"name": "purposeBlockAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "userId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "dataUsageId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "isConsented",
+								"type": "bool"
+							},
+							{
+								"internalType": "string",
+								"name": "servicePurpose",
+								"type": "string"
+							}
+						],
+						"internalType": "struct AgreementSmartContract.Consent",
 						"name": "",
-						"type": "address"
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getConsentCounter",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -104,19 +166,19 @@
 			]
 		},
 		"contracts/AgreementSmartContract.sol": {
-			"keccak256": "0xd06254e2bd3c16353e93f9d9fd1c8038d4b7c2a729e3292d716f7ee5f607bcbe",
+			"keccak256": "0xf1fa075891c6c7f2401f617a3aa5ebb35064a2a9bfdaf9e8b0da5c675916f007",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://895f34ee6408e030d17aa2ec7dc5da46418f04418bcddd180945f084475ee3dd",
-				"dweb:/ipfs/QmQnqQhYxergTWCk5Gg7fFEqE4S8DZjpuNrTX12CTG3Q3Q"
+				"bzz-raw://0e700a04220c355823b3b32123258de4d354cc6fa373d5d61b7845b64a1a1af6",
+				"dweb:/ipfs/QmVEL3ADLWEWzxarh7rPDKALEQ2bZCj11sUEjMmcz1T1Bv"
 			]
 		},
 		"contracts/DataUsageSmartContract.sol": {
-			"keccak256": "0x66f6cfe196660f0d5371efc09b137229baaba57482635c0c20848b2444f090e0",
+			"keccak256": "0xc183262171e09e6d9307392f230b25ea736e008899d7a6ee03b68b3b0604bfce",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8cce17e3da24a2e2bad5678f07046c34ab7cbf9d2717ebb277fa75c46625ae95",
-				"dweb:/ipfs/QmWZ7UFYyT6quKbkby6V41anJGdYvGxpubPYVeDXgst1Fs"
+				"bzz-raw://0fa520fa67bdc7a38bcd696edc01a9c968abd351d1d9cdea8f604d56048c2f6f",
+				"dweb:/ipfs/QmWwyUmiLY1akApputs32w3vXA164HvrAUZm3rMu1F9rt6"
 			]
 		}
 	},
