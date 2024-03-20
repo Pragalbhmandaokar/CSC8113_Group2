@@ -18,7 +18,6 @@ contract DataUsageSmartContract is AccessControl {
 
     struct Actor {
         uint actorId;
-        address actorAddress;
         string actorName;
     }
 
@@ -29,7 +28,7 @@ contract DataUsageSmartContract is AccessControl {
         string userTelephone;
         string[] additionalInfos;
     }
-
+    
     // Mapping
 
     mapping(uint => DataUsage) private dataUsages;              // mapping dataUsages <uint dataUsageId, DataUsage theDataUsage>
@@ -67,8 +66,8 @@ contract DataUsageSmartContract is AccessControl {
         personalDataCounter++;
     }
 
-    function getPersonalDataByKey(uint _personalDataId) public onlyOwner returns (PersonalData memory) {
-        require(_personalDataId < personalDataCounter, "PersonalData does not exist.");
+    function getPersonalDataByKey(uint _personalDataId) public view returns (PersonalData memory) {
+        // require(_personalDataId < personalDataCounter, "PersonalData does not exist.");
         return personalDatas[_personalDataId];
     }
 
@@ -79,7 +78,7 @@ contract DataUsageSmartContract is AccessControl {
     // ------ mapping : processedPersonalDatas ---- : add function is "public onlyOwner", get functions are "public view"
     function addProcessedPersonalData(uint _personalDataId) public onlyOwner {
         // Ensure that the personal data exists
-        require(_personalDataId < personalDataCounter, "PersonalData does not exist.");
+        //require(_personalDataId < personalDataCounter, "PersonalData does not exist.");
     
         // Retrieve the personal data
         PersonalData storage personalData = personalDatas[_personalDataId];
@@ -99,7 +98,7 @@ contract DataUsageSmartContract is AccessControl {
             dataToHash = abi.encodePacked(dataToHash, personalData.additionalInfos[i]);
         }
 
-        // Generate the hash of the concatenated data
+        // Generate the hash of the concatenated data 
         bytes32 processedPersonalData = keccak256(dataToHash);
 
         // Create a mapping from the personalDataId to the hashed data
@@ -107,15 +106,14 @@ contract DataUsageSmartContract is AccessControl {
     }
 
     function getProcessedPersonalDataByKey(uint _personalDataId) public view returns (bytes32) {
-        require(_personalDataId < personalDataCounter, "ProcessedPersonalData does not exist.");
+        // require(_personalDataId < personalDataCounter, "ProcessedPersonalData does not exist.");
         return processedPersonalDatas[_personalDataId];
     }
 
     // ------ mapping : actors ---- : add function is "public onlyOwner", get functions are "public view"
-    function addActor(uint _actorId, address _actorAddress, string memory _actorName) public onlyOwner {
+    function addActor(uint _actorId, string memory _actorName) public onlyOwner {
         actors[_actorId] = Actor({
             actorId: _actorId,
-            actorAddress: _actorAddress,
             actorName: _actorName
         });
         // Update the actorIds array and handle its counter as needed
@@ -143,7 +141,7 @@ contract DataUsageSmartContract is AccessControl {
         bytes32[] memory processedDatas = new bytes32[](_personalDataIds.length);
         
         for (uint i = 0; i < _personalDataIds.length; i++) {
-            require(_personalDataIds[i] < personalDataCounter, "PersonalData does not exist.");
+            // require(_personalDataIds[i] < personalDataCounter, "PersonalData does not exist.");
             processedDatas[i] = getProcessedPersonalDataByKey(_personalDataIds[i]);
         }
 
@@ -165,7 +163,7 @@ contract DataUsageSmartContract is AccessControl {
 
 
     function getDataUsageByKey(uint _dataUsageId) public view returns (DataUsage memory) {
-        require(_dataUsageId < dataUsageCounter, "DataUsage does not exist.");
+        // require(_dataUsageId < dataUsageCounter, "DataUsage does not exist.");
         return dataUsages[_dataUsageId];
     }
 

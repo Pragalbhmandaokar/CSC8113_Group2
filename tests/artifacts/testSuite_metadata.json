@@ -1,0 +1,105 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "beforeAll",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testAddActor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testAddDataUsage",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testAddPersonalData",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testAddProcessedPersonalData",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"tests/Verification_test.sol": "testSuite"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/AccessControl.sol": {
+			"keccak256": "0xdfdcf8b60f0514ab6840939fe3637ebe36764180a9563fb5587fc2f4a8d71935",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://13d9fbbb25926ed11f3d043d2fc1c5ce98f264aeb330356a25cd86e3279fc43c",
+				"dweb:/ipfs/QmQnGDgLmvzNrNTDGM5HpgNdDcqG8PBRdCBaQ8H7EwfmZn"
+			]
+		},
+		"contracts/DataUsageSmartContract.sol": {
+			"keccak256": "0x635c2f7e3cc88aeac7287c65dc59a64a8f0452f37a1a6f6426440f9f9941fd07",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4897dcf586f0c1bf1157c81746a9d682b49711addda143441ae57ac3929a8c4e",
+				"dweb:/ipfs/QmYhgdrx8wGxwgTsyrVspFRpthWqmcxmhBxnVtP3CiHX7z"
+			]
+		},
+		"remix_tests.sol": {
+			"keccak256": "0xe2783cdc204cba8c72494119339f1d90f9022b15d6c718c668b7f097d8e29787",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://bb6a22e64c7f16bcaab63b1c1a1b269d5be8a6d37bdd9dec1718477ab916b18e",
+				"dweb:/ipfs/QmdkW1tT5iadBvaHMCoskhDGZKnfdg8o1D9CcoQYtdJet7"
+			]
+		},
+		"tests/Verification_test.sol": {
+			"keccak256": "0xcd5153ca1b0b702ed60a2ba6668f2cf38e951b114d73d6c76fd42118bebcb6a8",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://f16e506d4a046ca43a0cf56739bdefa55bba918a7a8c0ddbf85c2c8d4053fd3a",
+				"dweb:/ipfs/QmeeCbVpfKSmcvX1dMm94sC5ex6Kq8Xb5gkHS34v6zjtvK"
+			]
+		}
+	},
+	"version": 1
+}

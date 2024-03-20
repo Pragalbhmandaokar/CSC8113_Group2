@@ -14,6 +14,8 @@ contract Verification is AccessControl {
 
     uint[] private violators;                                   // Array to store the IDs of the actors that violated the agreements
 
+    event ActorFlaggedAsViolator(address indexed _actor,string  _serviceName,string _servicePurpose, string _violationMessage);
+
     constructor(
         address _dataUsageSmartContractAddress,
         address _agreementSmartContractAddress,
@@ -28,7 +30,6 @@ contract Verification is AccessControl {
         logSmartContract = LogSmartContract(_logSmartContractAddress);
     }
     
-
     function verifyCompliance() public onlyOwner {
         uint[] memory logKeys = logSmartContract.getLogKeys();
         uint[] memory consentKeys = agreementSmartContract.getConsentKeys();

@@ -7,7 +7,6 @@ import "./DataUsageSmartContract.sol";
 contract AgreementSmartContract is AccessControl {
 
     // Struct
-    
     struct Consent {
         address purposeBlockAddress;        // = dataUsageSmartContractAddress, input
         uint userId;                        // input
@@ -60,7 +59,7 @@ contract AgreementSmartContract is AccessControl {
     }
 
     function getConsentByKey(uint _dataUsageId) public view returns (Consent memory) {
-        require(consents[_dataUsageId].dataUsageId != 0, "Consent does not exist.");
+        // require(consents[_dataUsageId].dataUsageId != 0, "Consent does not exist.");
         return consents[_dataUsageId];
     }
 

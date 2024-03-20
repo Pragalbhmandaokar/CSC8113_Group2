@@ -63,7 +63,7 @@ contract LogSmartContract is AccessControl {
     }
 
     function getLogByKey(uint _dataUsageId) public view returns (Log memory) {
-        require(logs[_dataUsageId].dataUsageId != 0, "Log does not exist.");
+        //require(logs[_dataUsageId].dataUsageId != 0, "Log does not exist.");
         return logs[_dataUsageId];
     }
 
