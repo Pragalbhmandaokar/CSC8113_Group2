@@ -79,6 +79,14 @@ contract Verification is AccessControl {
         }
     }
 
+    /** In the revised verifyCompliance function:
+            1 - It first fetches the keys for logs and consents.
+            2 - It iterates over the log keys and, within that loop, iterates over the consent keys to find matches.
+            3 - When a matching key is found, it performs the necessary verifications:
+                    - Checks if the consent is given and the actor's ID matches.
+                    - Compares the operations and processed personal data between the log and data usage entries.
+            4 - If any discrepancies are found, it flags the actor as a violator.
+    */
 
     function getViolators() public view returns (uint[] memory) {
         return violators;

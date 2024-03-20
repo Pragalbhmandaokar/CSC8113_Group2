@@ -67,7 +67,11 @@
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {},
+			"methods": {
+				"getViolators()": {
+					"notice": "In the revised verifyCompliance function: 1 - It first fetches the keys for logs and consents. 2 - It iterates over the log keys and, within that loop, iterates over the consent keys to find matches. 3 - When a matching key is found, it performs the necessary verifications: - Checks if the consent is given and the actor's ID matches. - Compares the operations and processed personal data between the log and data usage entries. 4 - If any discrepancies are found, it flags the actor as a violator."
+				}
+			},
 			"version": 1
 		}
 	},
@@ -120,11 +124,11 @@
 			]
 		},
 		"contracts/Verification.sol": {
-			"keccak256": "0xe59cea52f9c04b06ad4efa25e39fdb85cc7436d40db9e7bf3e66316e5f110624",
+			"keccak256": "0x1db4b12e51b8ed6ab5c6a0163cc12d4ab62e18a8453459a370e15e88e03e2b14",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e3d8bf8689403b4dca54326d5dc672b0318a2df0c4bfbcdcb9c51e8745ad5102",
-				"dweb:/ipfs/QmPx3kzNuU1SqvosmjGbnJHM3qUazR8dsMrVi2GKH6CPbc"
+				"bzz-raw://59b1e3b905cd710b40ff964579ffc9cc2e7e98a17011fe5d217f5ffa3fce92c7",
+				"dweb:/ipfs/QmNTT3sbE4fr6MoRpHhs2uJexPj4dtfDZzHbt84ZRSyap8"
 			]
 		}
 	},
