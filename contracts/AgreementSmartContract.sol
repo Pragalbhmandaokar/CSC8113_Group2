@@ -1,21 +1,31 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
-contract AgreementSmartContract {
-    struct Agreement {
-        bytes32 purposeBlockHash;
-        uint userID;
-        bool consent;
-    }
-    
-    mapping(uint => Agreement) public agreements;    //array [] = {}
-    uint public agreementCount;
-   
-    function addAgreement(bytes32 _purposeBlockHash, uint _userID, bool _consent) public {
-        agreements[agreementCount] = Agreement(_purposeBlockHash, _userID, _consent);
-        agreementCount++;
+pragma solidity ^0.8.10;
+
+import "./AccessControl.sol";
+import "./DataUsageSmartContract.sol";
+
+contract AgreementSmartContract is AccessControl {
+
+    struct Consent {
+        uint dataUsageId;             // ID linking to a specific DataUsage record
+        address purposeBlockAddress;  // Address of the DataUsageSmartContract
+        uint userId;                  // ID of the user giving consent
+        string servicePurpose;        // The purpose for which the service is used
+        bool isConsent;               // Whether negative(false) / positive(true)
     }
 
-    function getAgreementsLength() public view returns (uint){
-        return agreementCount;
+    DataUsageSmartContract public dataUsageSmartContract;
+
+    mapping(uint => Consent) private consents;       // Mapping from userID to consent
+    uint private consentCount = 0;
+
+    event ConsentAdded(uint indexed userId, uint indexed dataUsageId, bool isConsent);
+
+    constructor(address _dataUsageSmartContractAddress) {
+        dataUsageSmartContract = DataUsageSmartContract(_dataUsageSmartContractAddress);
     }
+
+
+    
+
 }

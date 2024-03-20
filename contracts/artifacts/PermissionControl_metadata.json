@@ -7,6 +7,11 @@
 		"abi": [
 			{
 				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
 				"name": "owner",
 				"outputs": [
 					{
@@ -32,7 +37,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Verification.sol": "Verification"
+			"contracts/PermissionControl.sol": "PermissionControl"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -52,14 +57,6 @@
 			"urls": [
 				"bzz-raw://337230e5db2944f5f9c729399c1a4858c37e5e20eb9008e29927f85aaf10a2b6",
 				"dweb:/ipfs/QmauCxrtGyBcdiqC7tDC9y3rHiDnWiMfcxgP8iT6web75f"
-			]
-		},
-		"contracts/Verification.sol": {
-			"keccak256": "0x3dd2afc425d93add74a7cdb2e5b19db8197d16adbad2b486baa9925506fd10e7",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://957597520cf9061b0842a305314346daca729778328832dd2b07af1061bbced0",
-				"dweb:/ipfs/Qmf69BRTThWAicmi18yn1uQe1puvyeA67NyESUrHxGeeDg"
 			]
 		}
 	},

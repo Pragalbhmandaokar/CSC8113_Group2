@@ -8,63 +8,47 @@
 			{
 				"inputs": [
 					{
-						"internalType": "bytes32",
-						"name": "_purposeBlockHash",
-						"type": "bytes32"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_userID",
-						"type": "uint256"
-					},
-					{
-						"internalType": "bool",
-						"name": "_consent",
-						"type": "bool"
+						"internalType": "address",
+						"name": "_dataUsageSmartContractAddress",
+						"type": "address"
 					}
 				],
-				"name": "addAgreement",
-				"outputs": [],
 				"stateMutability": "nonpayable",
-				"type": "function"
+				"type": "constructor"
 			},
 			{
-				"inputs": [],
-				"name": "agreementCount",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
+				"anonymous": false,
 				"inputs": [
 					{
+						"indexed": true,
 						"internalType": "uint256",
-						"name": "",
+						"name": "userId",
 						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "dataUsageId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "isConsent",
+						"type": "bool"
 					}
 				],
-				"name": "agreements",
+				"name": "ConsentAdded",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "dataUsageSmartContract",
 				"outputs": [
 					{
-						"internalType": "bytes32",
-						"name": "purposeBlockHash",
-						"type": "bytes32"
-					},
-					{
-						"internalType": "uint256",
-						"name": "userID",
-						"type": "uint256"
-					},
-					{
-						"internalType": "bool",
-						"name": "consent",
-						"type": "bool"
+						"internalType": "contract DataUsageSmartContract",
+						"name": "",
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -72,12 +56,12 @@
 			},
 			{
 				"inputs": [],
-				"name": "getAgreementsLength",
+				"name": "owner",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "address",
 						"name": "",
-						"type": "uint256"
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -105,18 +89,34 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"contracts/AgreementSmartContract.sol": {
-			"keccak256": "0x9dfb9ad5b766e6d27460890040fa48e5f483afd9d86c9c463e16935df5b9ad6f",
+		"contracts/AccessControl.sol": {
+			"keccak256": "0x08f61974b188ff1b97f522bb5544a473e3b065095894c2616ed23cdb2c807d49",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://74ed41fe7c53d23ae8102c94b67847a4513e9b3f70834852ef4027e7006af864",
-				"dweb:/ipfs/QmX8fxGKD7kyn5RFZUE9WS4yqpjtpdMDC8r7d7W6mjy64F"
+				"bzz-raw://bbcd0174cd6fb39797ab47bdbcdf72762b9e9ab37bff00a161c5e12dcba91e40",
+				"dweb:/ipfs/QmPPr6nZPQESDhFwABwwtH2eKL3HTB6KpQZTgzKoPrAszM"
+			]
+		},
+		"contracts/AgreementSmartContract.sol": {
+			"keccak256": "0xd06254e2bd3c16353e93f9d9fd1c8038d4b7c2a729e3292d716f7ee5f607bcbe",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://895f34ee6408e030d17aa2ec7dc5da46418f04418bcddd180945f084475ee3dd",
+				"dweb:/ipfs/QmQnqQhYxergTWCk5Gg7fFEqE4S8DZjpuNrTX12CTG3Q3Q"
+			]
+		},
+		"contracts/DataUsageSmartContract.sol": {
+			"keccak256": "0x66f6cfe196660f0d5371efc09b137229baaba57482635c0c20848b2444f090e0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8cce17e3da24a2e2bad5678f07046c34ab7cbf9d2717ebb277fa75c46625ae95",
+				"dweb:/ipfs/QmWZ7UFYyT6quKbkby6V41anJGdYvGxpubPYVeDXgst1Fs"
 			]
 		}
 	},

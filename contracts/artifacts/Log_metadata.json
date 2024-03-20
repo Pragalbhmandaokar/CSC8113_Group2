@@ -1,0 +1,170 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "logDataMapping",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "actorAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "actorId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "operation",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "serviceName",
+						"type": "string"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "userAddress",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "userId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "telephone",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct DataUsageSmartContract.PersonalData",
+						"name": "personalData",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_actorAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_actorId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_operation",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_serviceName",
+						"type": "string"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "userAddress",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "userId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "telephone",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct DataUsageSmartContract.PersonalData",
+						"name": "_personalData",
+						"type": "tuple"
+					}
+				],
+				"name": "setLog",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/LogSmartContract.sol": "Log"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/DataUsageSmartContract.sol": {
+			"keccak256": "0x5cced0cec3b760d56c227d4814708f398bfe09c41437e2d3f209a743f47003fb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9a55befb6cf0074a64e3797239d5c24fc6ddc4ee207969056c66253cd73bc09b",
+				"dweb:/ipfs/QmR4J8oVPeTN4YZZKAUGkNPCAFbfx3Xtj57jJPSbkXGihy"
+			]
+		},
+		"contracts/LogSmartContract.sol": {
+			"keccak256": "0xe0284c8671909bb3ca82fc9f5ed130ffb8d3ca617e4465978145448eb55d0c45",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://96cf3ea5287c9a8c5bd5e55758beb2db2703c79e5a732d004086f70ec6e14987",
+				"dweb:/ipfs/QmP4nxyXz2Q5zvoKN9gtVt6gZt9fnCeca1tNQVU1ozZf6g"
+			]
+		}
+	},
+	"version": 1
+}

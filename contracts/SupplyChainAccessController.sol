@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/AccessControl.sol";
+
 contract LogSmartContract is AccessControl{
 
     modifier only(bytes32 role) {

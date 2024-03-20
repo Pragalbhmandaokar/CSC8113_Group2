@@ -6,12 +6,43 @@
 	"output": {
 		"abi": [
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "dataUsageId",
+						"type": "uint256"
+					}
+				],
+				"name": "DataUsageAdded",
+				"type": "event"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "_actorID",
+						"name": "_actorId",
 						"type": "uint256"
 					},
+					{
+						"internalType": "address",
+						"name": "_actorAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_actorName",
+						"type": "string"
+					}
+				],
+				"name": "addActor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
 					{
 						"internalType": "string",
 						"name": "_serviceName",
@@ -23,14 +54,19 @@
 						"type": "string"
 					},
 					{
-						"internalType": "string",
-						"name": "_operation",
-						"type": "string"
+						"internalType": "uint256",
+						"name": "_actorId",
+						"type": "uint256"
 					},
 					{
 						"internalType": "string[]",
-						"name": "_personalData",
+						"name": "_operations",
 						"type": "string[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "_personalDataIds",
+						"type": "uint256[]"
 					}
 				],
 				"name": "addDataUsage",
@@ -42,31 +78,92 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "",
+						"name": "_userId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_userName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_userAddress",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_userTelephone",
+						"type": "string"
+					},
+					{
+						"internalType": "string[]",
+						"name": "additionalInfos",
+						"type": "string[]"
+					}
+				],
+				"name": "addPersonalData",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_personalDataId",
 						"type": "uint256"
 					}
 				],
-				"name": "dataUsages",
-				"outputs": [
+				"name": "addProcessedPersonalData",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "actorID",
+						"name": "_actorId",
 						"type": "uint256"
-					},
+					}
+				],
+				"name": "getActorByKey",
+				"outputs": [
 					{
-						"internalType": "string",
-						"name": "serviceName",
-						"type": "string"
-					},
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "actorId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "actorAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "actorName",
+								"type": "string"
+							}
+						],
+						"internalType": "struct DataUsageSmartContract.Actor",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getActorIds",
+				"outputs": [
 					{
-						"internalType": "string",
-						"name": "servicePurpose",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "operation",
-						"type": "string"
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
 					}
 				],
 				"stateMutability": "view",
@@ -76,16 +173,152 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "index",
+						"name": "_dataUsageId",
 						"type": "uint256"
 					}
 				],
-				"name": "getPurposeHash",
+				"name": "getDataUsageByKey",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "serviceName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "servicePurpose",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "actorId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string[]",
+								"name": "operations",
+								"type": "string[]"
+							},
+							{
+								"internalType": "uint256[]",
+								"name": "personalDataIds",
+								"type": "uint256[]"
+							},
+							{
+								"internalType": "bytes32[]",
+								"name": "processedPersonalDatas",
+								"type": "bytes32[]"
+							}
+						],
+						"internalType": "struct DataUsageSmartContract.DataUsage",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getDataUsageCounter",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_personalDataId",
+						"type": "uint256"
+					}
+				],
+				"name": "getPersonalDataByKey",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "userId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "userName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "userAddress",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "userTelephone",
+								"type": "string"
+							},
+							{
+								"internalType": "string[]",
+								"name": "additionalInfos",
+								"type": "string[]"
+							}
+						],
+						"internalType": "struct DataUsageSmartContract.PersonalData",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getPersonalDataCounter",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_personalDataId",
+						"type": "uint256"
+					}
+				],
+				"name": "getProcessedPersonalDataByKey",
 				"outputs": [
 					{
 						"internalType": "bytes32",
 						"name": "",
 						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -113,18 +346,26 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"contracts/DataUsageSmartContract.sol": {
-			"keccak256": "0xe9fb278100bd796a13cf757d1b75422699b646ed822a934f88d6bd1ab8206965",
+		"contracts/AccessControl.sol": {
+			"keccak256": "0x08f61974b188ff1b97f522bb5544a473e3b065095894c2616ed23cdb2c807d49",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5bd952211c570445a2801ade7b05151b33cc01a05f2c1cf3059479428fe78f27",
-				"dweb:/ipfs/QmU1ro4yKUGSatgUsMEM8PbnQgd9cjnUdTud9pg7fghcow"
+				"bzz-raw://bbcd0174cd6fb39797ab47bdbcdf72762b9e9ab37bff00a161c5e12dcba91e40",
+				"dweb:/ipfs/QmPPr6nZPQESDhFwABwwtH2eKL3HTB6KpQZTgzKoPrAszM"
+			]
+		},
+		"contracts/DataUsageSmartContract.sol": {
+			"keccak256": "0xc183262171e09e6d9307392f230b25ea736e008899d7a6ee03b68b3b0604bfce",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0fa520fa67bdc7a38bcd696edc01a9c968abd351d1d9cdea8f604d56048c2f6f",
+				"dweb:/ipfs/QmWwyUmiLY1akApputs32w3vXA164HvrAUZm3rMu1F9rt6"
 			]
 		}
 	},
