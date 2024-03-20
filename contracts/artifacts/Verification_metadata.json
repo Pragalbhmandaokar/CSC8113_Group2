@@ -6,6 +6,40 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_dataUsageSmartContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_agreementSmartContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_logSmartContractAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "getViolators",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "owner",
 				"outputs": [
@@ -16,6 +50,13 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "verifyCompliance",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -79,11 +120,11 @@
 			]
 		},
 		"contracts/Verification.sol": {
-			"keccak256": "0xba471fbfacaa1f81348e2965412358df7a7553d4ef3601d7c920a740e35a5348",
+			"keccak256": "0xa4c6795984e8a35f12f4413363362b73be408a8c9367f43412407a245f30e017",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://14a279a0a199dc3b60e53a7c6b71eef781bf4167b5ea2f7f7bb4ef592f2ac820",
-				"dweb:/ipfs/QmVx5Nr1LMhWhUZ1yqMXwKnZTy7Pz97MtC9noZdMReCXjQ"
+				"bzz-raw://3332747d7845941b22a3b4ffa2c076eb3cb5ba20bc0968141e453ff553b517a4",
+				"dweb:/ipfs/QmPYff55AsxLmfSLFmJyJ634FNgW7Ds7KPpaiDXRtsyDVk"
 			]
 		}
 	},
