@@ -8,24 +8,33 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "_dataUsageSmartContractAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
 						"internalType": "uint256",
-						"name": "_actorID",
+						"name": "dataUsageId",
 						"type": "uint256"
-					},
+					}
+				],
+				"name": "LogAdded",
+				"type": "event"
+			},
+			{
+				"inputs": [
 					{
-						"internalType": "string",
-						"name": "_operation",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "_serviceName",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "_processedPersonalData",
-						"type": "string"
+						"internalType": "uint256",
+						"name": "_dataUsageId",
+						"type": "uint256"
 					}
 				],
 				"name": "addLog",
@@ -34,8 +43,54 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_dataUsageId",
+						"type": "uint256"
+					}
+				],
+				"name": "getLogByKey",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "dataUsageId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "actorId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string[]",
+								"name": "operations",
+								"type": "string[]"
+							},
+							{
+								"internalType": "string",
+								"name": "serviceName",
+								"type": "string"
+							},
+							{
+								"internalType": "bytes32[]",
+								"name": "processedPersonalDatas",
+								"type": "bytes32[]"
+							}
+						],
+						"internalType": "struct LogSmartContract.Log",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
-				"name": "getLogsLength",
+				"name": "getLogCounter",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -47,34 +102,26 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "logs",
+				"inputs": [],
+				"name": "getLogKeys",
 				"outputs": [
 					{
-						"internalType": "uint256",
-						"name": "actorID",
-						"type": "uint256"
-					},
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
 					{
-						"internalType": "string",
-						"name": "operation",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "serviceName",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "processedPersonalData",
-						"type": "string"
+						"internalType": "address",
+						"name": "",
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -102,18 +149,34 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"contracts/LogSmartContract.sol": {
-			"keccak256": "0x2381cbebf23ca3bf4085af3b13a02e9203d8739e66c92c05f439c94bf220bdb6",
+		"contracts/AccessControl.sol": {
+			"keccak256": "0x08f61974b188ff1b97f522bb5544a473e3b065095894c2616ed23cdb2c807d49",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://162c25612db797f3ec9a7567b5299be5d00e0d544aae3a10c987d69f2782b01f",
-				"dweb:/ipfs/QmcxxqSUq54ny6qEtN1YaZ3uCVSGHULsgxJrLbfjNHwj3F"
+				"bzz-raw://bbcd0174cd6fb39797ab47bdbcdf72762b9e9ab37bff00a161c5e12dcba91e40",
+				"dweb:/ipfs/QmPPr6nZPQESDhFwABwwtH2eKL3HTB6KpQZTgzKoPrAszM"
+			]
+		},
+		"contracts/DataUsageSmartContract.sol": {
+			"keccak256": "0xc183262171e09e6d9307392f230b25ea736e008899d7a6ee03b68b3b0604bfce",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0fa520fa67bdc7a38bcd696edc01a9c968abd351d1d9cdea8f604d56048c2f6f",
+				"dweb:/ipfs/QmWwyUmiLY1akApputs32w3vXA164HvrAUZm3rMu1F9rt6"
+			]
+		},
+		"contracts/LogSmartContract.sol": {
+			"keccak256": "0x20bbe7a60f858ee197becd99e7f831a1380e56da9920978f8c2ba7c57ccb5311",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0f1c6f60fe7ea1fce3ec356578f1506cd89d369d7da452cc4c08e3705a7bb79c",
+				"dweb:/ipfs/QmbRc7Qzw5mucwqRjJkAhQ12kw66ECg3eJJ5A1So6AvoMf"
 			]
 		}
 	},

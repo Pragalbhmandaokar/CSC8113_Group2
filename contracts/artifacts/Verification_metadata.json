@@ -9,17 +9,17 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "_dataUsageContract",
+						"name": "_dataUsageSmartContractAddress",
 						"type": "address"
 					},
 					{
 						"internalType": "address",
-						"name": "_agreementContract",
+						"name": "_agreementSmartContractAddress",
 						"type": "address"
 					},
 					{
 						"internalType": "address",
-						"name": "_logContract",
+						"name": "_logSmartContractAddress",
 						"type": "address"
 					}
 				],
@@ -28,10 +28,23 @@
 			},
 			{
 				"inputs": [],
-				"name": "agreementContract",
+				"name": "getViolators",
 				"outputs": [
 					{
-						"internalType": "contract AgreementSmartContract",
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
 						"name": "",
 						"type": "address"
 					}
@@ -41,41 +54,9 @@
 			},
 			{
 				"inputs": [],
-				"name": "checkViolations",
-				"outputs": [
-					{
-						"internalType": "string[]",
-						"name": "violators",
-						"type": "string[]"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "dataUsageContract",
-				"outputs": [
-					{
-						"internalType": "contract DataUsageSmartContract",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "logContract",
-				"outputs": [
-					{
-						"internalType": "contract LogSmartContract",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
+				"name": "verifyCompliance",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -86,7 +67,11 @@
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {},
+			"methods": {
+				"getViolators()": {
+					"notice": "In the revised verifyCompliance function: 1 - It first fetches the keys for logs and consents. 2 - It iterates over the log keys and, within that loop, iterates over the consent keys to find matches. 3 - When a matching key is found, it performs the necessary verifications: - Checks if the consent is given and the actor's ID matches. - Compares the operations and processed personal data between the log and data usage entries. 4 - If any discrepancies are found, it flags the actor as a violator."
+				}
+			},
 			"version": 1
 		}
 	},
@@ -100,42 +85,50 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"contracts/AgreementSmartContract.sol": {
-			"keccak256": "0x9dfb9ad5b766e6d27460890040fa48e5f483afd9d86c9c463e16935df5b9ad6f",
+		"contracts/AccessControl.sol": {
+			"keccak256": "0x08f61974b188ff1b97f522bb5544a473e3b065095894c2616ed23cdb2c807d49",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://74ed41fe7c53d23ae8102c94b67847a4513e9b3f70834852ef4027e7006af864",
-				"dweb:/ipfs/QmX8fxGKD7kyn5RFZUE9WS4yqpjtpdMDC8r7d7W6mjy64F"
+				"bzz-raw://bbcd0174cd6fb39797ab47bdbcdf72762b9e9ab37bff00a161c5e12dcba91e40",
+				"dweb:/ipfs/QmPPr6nZPQESDhFwABwwtH2eKL3HTB6KpQZTgzKoPrAszM"
+			]
+		},
+		"contracts/AgreementSmartContract.sol": {
+			"keccak256": "0xae2ee4a98e0f1f56ee3ae9d5cf154b48ee756e68acd1034c62ce10ee828f857f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ae126a09871aabc84e5bd17305f47b039d41fd2b3042c4e7fad106fcc84252b2",
+				"dweb:/ipfs/QmeBbWQnH73MV6x9JNLAf4LhrjL5JfqeX2UyJBzHJtmnX4"
 			]
 		},
 		"contracts/DataUsageSmartContract.sol": {
-			"keccak256": "0xe9fb278100bd796a13cf757d1b75422699b646ed822a934f88d6bd1ab8206965",
+			"keccak256": "0xc183262171e09e6d9307392f230b25ea736e008899d7a6ee03b68b3b0604bfce",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5bd952211c570445a2801ade7b05151b33cc01a05f2c1cf3059479428fe78f27",
-				"dweb:/ipfs/QmU1ro4yKUGSatgUsMEM8PbnQgd9cjnUdTud9pg7fghcow"
+				"bzz-raw://0fa520fa67bdc7a38bcd696edc01a9c968abd351d1d9cdea8f604d56048c2f6f",
+				"dweb:/ipfs/QmWwyUmiLY1akApputs32w3vXA164HvrAUZm3rMu1F9rt6"
 			]
 		},
 		"contracts/LogSmartContract.sol": {
-			"keccak256": "0x1171aa9ea15ebe03867f348e57e578f95668be242273b1525693a848ea0c9c60",
+			"keccak256": "0x20bbe7a60f858ee197becd99e7f831a1380e56da9920978f8c2ba7c57ccb5311",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://00f0c264a2445a62b3fd4ab4f49d021dcd66cdb4c20652f7b5795f0730cb8c3c",
-				"dweb:/ipfs/QmVji8oasybHQ7zKfSKfTMd9cgJipZFf2vbMtA8nxLiTaw"
+				"bzz-raw://0f1c6f60fe7ea1fce3ec356578f1506cd89d369d7da452cc4c08e3705a7bb79c",
+				"dweb:/ipfs/QmbRc7Qzw5mucwqRjJkAhQ12kw66ECg3eJJ5A1So6AvoMf"
 			]
 		},
 		"contracts/Verification.sol": {
-			"keccak256": "0xa1203d66d7f219312b863c8a6b109a296f9b0cdab4adad4cec23346335fe694c",
+			"keccak256": "0x1db4b12e51b8ed6ab5c6a0163cc12d4ab62e18a8453459a370e15e88e03e2b14",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://efed62b9fcce0ad5dcfe1c45ac4d8f8d9887c973a9603c73f4198f0eb6037abb",
-				"dweb:/ipfs/QmQPYwrwYknQZ1sWvViHVP72QBPXkquKRc2RcU9wL6u6zJ"
+				"bzz-raw://59b1e3b905cd710b40ff964579ffc9cc2e7e98a17011fe5d217f5ffa3fce92c7",
+				"dweb:/ipfs/QmNTT3sbE4fr6MoRpHhs2uJexPj4dtfDZzHbt84ZRSyap8"
 			]
 		}
 	},

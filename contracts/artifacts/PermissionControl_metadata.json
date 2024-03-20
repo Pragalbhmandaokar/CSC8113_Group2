@@ -1,0 +1,64 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/PermissionControl.sol": "PermissionControl"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/PermissionControl.sol": {
+			"keccak256": "0x1ade994f7b1cc3b8969f3acbb4d96862017fde24dabe967c09bff772633e230e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://337230e5db2944f5f9c729399c1a4858c37e5e20eb9008e29927f85aaf10a2b6",
+				"dweb:/ipfs/QmauCxrtGyBcdiqC7tDC9y3rHiDnWiMfcxgP8iT6web75f"
+			]
+		}
+	},
+	"version": 1
+}
