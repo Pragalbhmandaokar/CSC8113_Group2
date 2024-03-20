@@ -26,7 +26,7 @@ contract Verification {
             LogSmartContract.Log memory log = LogSmartContract.Log(_actorID, _operation, _serviceName, _processedPersonalData);
            
             // LogSmartContract.Log memory log = logContract.logs[i];
-            bool found = false;
+            bool found = false; 
 
             for (uint j = 0; j < agreementContract.getAgreementsLength(); j++) {
                 (bytes32 _purposeBlockHash, uint _userID, bool _consent) = agreementContract.agreements(j);

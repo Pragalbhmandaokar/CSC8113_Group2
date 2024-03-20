@@ -7,15 +7,16 @@ contract AgreementSmartContract {
         bool consent;
     }
     
-    mapping(uint => Agreement) public agreements;    //array [] = {}
-    uint public agreementCount;
-   
+    // mapping(uint => Agreement) public agreements;    //array [] = {}
+    // uint public agreementCount = 0;
+
+   Agreement[] public agreements;
     function addAgreement(bytes32 _purposeBlockHash, uint _userID, bool _consent) public {
-        agreements[agreementCount] = Agreement(_purposeBlockHash, _userID, _consent);
-        agreementCount++;
+        agreements.push(Agreement(_purposeBlockHash, _userID, _consent));
+     
     }
 
     function getAgreementsLength() public view returns (uint){
-        return agreementCount;
+        return agreements.length;
     }
 }
