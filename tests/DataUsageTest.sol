@@ -34,7 +34,7 @@ contract DataUsageSmartTestCases {
         Assert.equal(actor.actorName, testActorName, "Actor name does not match");
     }
     
-     function testAddPersonalData() public {
+    function testAddPersonalData() public {
         uint testUserId = 1;
         string memory testUserName = "Rename it";
         string memory testUserAddress = "123 Main St";
@@ -52,7 +52,7 @@ contract DataUsageSmartTestCases {
     }
 
     //
-     function testAddProcessedPersonalData() public {
+    function testAddProcessedPersonalData() public {
         uint testPersonalDataId = 1;
 
      string[] memory testAdditionalInfos = new string[](1);
@@ -67,9 +67,8 @@ contract DataUsageSmartTestCases {
         Assert.notEqual(processedData, bytes32(0), "Processed personal data should not be empty");
     }
 
-    //
 
-     function testAddDataUsage() public {
+    function testAddDataUsage() public {
         string memory testServiceName = "Service ABC";
         string memory testServicePurpose = "Purpose XYZ";
         uint testActorId = 1;
