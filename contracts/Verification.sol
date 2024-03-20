@@ -6,17 +6,25 @@ import "./AgreementSmartContract.sol";
 import "./LogSmartContract.sol";
 
 contract Verification {
+
+    address public owner;
+
     DataUsageSmartContract public dataUsageContract;
     AgreementSmartContract public agreementContract;
     LogSmartContract public logContract;
+
+    string[] violators;
 
     constructor(address _dataUsageContract, address _agreementContract, address _logContract) {
         dataUsageContract = DataUsageSmartContract(_dataUsageContract);
         agreementContract = AgreementSmartContract(_agreementContract);
         logContract = LogSmartContract(_logContract);
+        owner = msg.sender;
     }
 
     function checkViolations() public view returns (string[] memory violators) {
+        require(msg.sender == owner, "Only owner can perform this action");
+
         uint logCount = logContract.getLogsLength();
         violators = new string[](logCount);
         uint violatorCount = 0;
