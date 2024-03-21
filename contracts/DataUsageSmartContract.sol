@@ -8,31 +8,25 @@ contract DataUsageSmartContract is AccessControl {
     // Struct
 
     struct DataUsage {
-        string serviceName;
-        string servicePurpose;
-        uint actorConsentId;                       // associated with the actor
+        bytes32 serviceName;
+        bytes32 servicePurpose;
+        uint actorId;                       // associated with the actor
         string[] operations;                //  == "read", "write", "transfer"(multiple)
         uint[] personalDataIds;             // associated with proccessedPersonalData(byte32)
         bytes32[] processedPersonalDatas;
     }
 
-    struct Actor {
-        uint actorId;
-        string actorName;
-    }
-
     struct PersonalData {
         uint userId;
-        string userName;
-        string userAddress;
-        string userTelephone;
+        bytes32 userName;
+        bytes32 userAddress;
+        bytes32 userTelephone;
         string[] additionalInfos;
     }
     
     // Mapping
 
     mapping(uint => DataUsage) private dataUsages;              // mapping dataUsages <uint dataUsageId, DataUsage theDataUsage>
-    mapping(uint => Actor) private actors;                      // mapping actors <uint actorId, Actor theActor>
     mapping(uint => PersonalData) private personalDatas;        // mapping personalDatas <uint personalDataId, PersonalData thePersonalData>
     mapping(uint => bytes32) private processedPersonalDatas;    // mapping processedPersonalDatas <uint personalDataId, byte32 theProcessedPersonalData>
 
@@ -42,18 +36,15 @@ contract DataUsageSmartContract is AccessControl {
     uint[] private actorIds;
     uint private personalDataCounter = 0;
 
-    // Event : When an event is triggered, it is recorded on the blockchain and can be listened to by external applications or other smart contracts.
-
-    event DataUsageAdded(uint dataUsageId);
     
     // Function
 
     // ------ mapping : personalDatas ---- : add\get PersonalData functions are "public onlyOwner", getCounter function is "public view"
     function addPersonalData(
         uint _userId,
-        string memory _userName,
-        string memory _userAddress,
-        string memory _userTelephone,
+        bytes32  _userName,
+        bytes32  _userAddress,
+        bytes32  _userTelephone,
         string[] memory additionalInfos
     ) public onlyOwner {
         personalDatas[_userId] = PersonalData({
@@ -110,29 +101,11 @@ contract DataUsageSmartContract is AccessControl {
         return processedPersonalDatas[_personalDataId];
     }
 
-    // ------ mapping : actors ---- : add function is "public onlyOwner", get functions are "public view"
-    function addActor(uint _actorId, string memory _actorName) public onlyOwner {
-        actors[_actorId] = Actor({
-            actorId: _actorId,
-            actorName: _actorName
-        });
-        // Update the actorIds array and handle its counter as needed
-        actorIds.push(_actorId);
-    }
-
-    function getActorByKey(uint _actorId) public view returns (Actor memory) {
-        require(actors[_actorId].actorId != 0, "Actor does not exist."); // Assuming 0 is not a valid ID
-        return actors[_actorId];
-    }
-
-    function getActorIds() public view returns (uint[] memory) {
-        return actorIds;
-    }
 
     // ------ mapping : dataUsages ---- : add function is "public onlyOwner", get functions are "public view"
     function addDataUsage(
-        string memory _serviceName,
-        string memory _servicePurpose,
+        bytes32 _serviceName,
+        bytes32 _servicePurpose,
         uint _actorId,
         string[] memory _operations,
         uint[] memory _personalDataIds
@@ -149,7 +122,7 @@ contract DataUsageSmartContract is AccessControl {
         dataUsages[_actorId] = DataUsage({
             serviceName: _serviceName,
             servicePurpose: _servicePurpose,
-            actorConsentId: _actorId,
+            actorId: _actorId,
             operations: _operations,
             personalDataIds: _personalDataIds,
             processedPersonalDatas: processedDatas
@@ -162,7 +135,7 @@ contract DataUsageSmartContract is AccessControl {
 
 
     function getDataUsageByKey(uint _actorConsentId) public view returns (DataUsage memory) {
-        require(dataUsages[_actorConsentId].actorConsentId != 0, "Data User does not exist.");
+        require(dataUsages[_actorConsentId].actorId != 0, "Data User does not exist.");
         return dataUsages[_actorConsentId];
     }
 

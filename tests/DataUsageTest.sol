@@ -80,7 +80,7 @@ contract DataUsageSmartTestCases {
         uint[] memory testPersonalDataIds = new uint[](1);
         testPersonalDataIds[0] = 1;
 
-         string[] memory testAdditionalInfos = new string[](1);
+        string[] memory testAdditionalInfos = new string[](1);
         testAdditionalInfos[0] = "some"; // Initialize the dynamic array manually
 
 

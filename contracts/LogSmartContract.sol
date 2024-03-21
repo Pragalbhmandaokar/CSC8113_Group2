@@ -12,12 +12,11 @@ contract LogSmartContract is AccessControl {
         uint dataUsageId;                                // can get the specific dataUsage, input
         uint actorId;                                    // below all data get from this dataUsage
         string[] operations;
-        string serviceName;
+        bytes32 serviceName;
         bytes32[] processedPersonalDatas;
     }
 
     // Associate with the DataUsageSmartContract
-
     DataUsageSmartContract private dataUsageSmartContract;
 
     // Mapping
@@ -52,7 +51,7 @@ contract LogSmartContract is AccessControl {
         // Create the log record
         logs[_dataUsageId] = Log({
             dataUsageId: _dataUsageId,
-            actorId: dataUsage.actorConsentId,
+            actorId: dataUsage.actorId,
             operations: dataUsage.operations,
             serviceName: dataUsage.serviceName,
             processedPersonalDatas: processedDatas
