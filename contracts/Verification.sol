@@ -31,48 +31,53 @@ contract Verification is AccessControl {
     }
     
     function verifyCompliance() public onlyOwner {
-        
-      
+        uint[] memory logKeys = logSmartContract.getLogKeys();
+        uint[] memory consentKeys = agreementSmartContract.getConsentKeys();
+               
+        for (uint i = 0; i < logKeys.length; i++) {
+             uint logKey = logKeys[i];
+
             LogSmartContract.Log memory log = logSmartContract.getLogByKey(logKey);
 
-           
+           for (uint j = 0; j < consentKeys.length; j++) {
+                uint consentKey = consentKeys[j];
+                
                 if (logKey == consentKey) {
                     AgreementSmartContract.Consent memory consent = agreementSmartContract.getConsentByKey(consentKey);
                     DataUsageSmartContract.DataUsage memory dataUsage = dataUsageSmartContract.getDataUsageByKey(logKey);
-
+                    
                     if (!consent.isConsented || log.actorId != consent.userId) {
                         violators.push(log.actorId);
                         continue;
                     }
 
                     bool isViolation = false;
-                    if(log.operations.length != dataUsage.operations.length) {
-                        isViolation = true;
-                    } else {
-                        for (uint k = 0; k < log.operations.length; k++) {
-                            if (keccak256(abi.encodePacked(log.operations[k])) != keccak256(abi.encodePacked(dataUsage.operations[k]))) {
-                                isViolation = true;
-                                break;
-                            }
-                        }
-                    }
+                    // if(log.operations.length != dataUsage.operations.length) {
+                    //     isViolation = true;
+                    // } else {
+                    //     for (uint k = 0; k < log.operations.length; k++) {
+                    //         if (keccak256(abi.encodePacked(log.operations[k])) != keccak256(abi.encodePacked(dataUsage.operations[k]))) {
+                    //             isViolation = true;
+                    //             break;
+                    //         }
+                    //     }
+                    // }
 
                     if (!isViolation) {
-                        for (uint l = 0; l < log.processedPersonalDatas.length; l++) {
-                            bytes32 logData = log.processedPersonalDatas[l];
-                            bytes32 consentData = dataUsageSmartContract.getProcessedPersonalDataByKey(dataUsage.personalDataIds[l]);
+                            bytes32 logData = log.processedPersonalDatas;
+                            bytes32 consentData = dataUsage.processedPersonalDatas;
                             if (logData != consentData) {
                                 isViolation = true;
                                 break;
                             }
-                        }
+                        
                     }
 
                     if (isViolation) {
                         violators.push(log.actorId);
                     }
-                
-            
+                }
+           }
         }
     }
 
@@ -86,7 +91,7 @@ contract Verification is AccessControl {
     */
 
     function getViolators() public view returns (uint[] memory) {
-        require(violators.length == 0, "violator is empty");
+        require(violators.length != 0, "violator is empty");
         return violators;
     }
 }

@@ -14,22 +14,10 @@ contract LogSmartContract is AccessControl {
         bytes32 processedPersonalDatas;
     }
 
-    // Associate with the DataUsageSmartContract
-    DataUsageSmartContract private dataUsageSmartContract;
-    // Mapping
-
+   // Mapping
     mapping(uint => Log) private logs;                  // mapping logs <uint dataUsageId, Log theLog>
     uint[] private logKeys;                             // key  = Log.dataUsageId(uint)
-    uint private logCounter = 0;                        // counter,(start from 0, ++ when add)
-
-    // Event
-    event LogAdded(uint dataUsageId);
-
-    // Constructor
-    constructor(address _dataUsageSmartContractAddress) {
-        dataUsageSmartContract = DataUsageSmartContract(_dataUsageSmartContractAddress);
-        require(_dataUsageSmartContractAddress != address(0), "DataUsageSmartContract address is invalid.");
-    }
+    uint private logCounter = 0;                       // counter,(start from 0, ++ when add)
 
     // Function 
 
@@ -44,7 +32,10 @@ contract LogSmartContract is AccessControl {
             serviceName: _serviceName,
             processedPersonalDatas: _processPersonalData
         });
-
+        
+        logKeys.push(_actorId);
+        logCounter++;
+       
     }
 
     function getLogByKey(uint _dataActorId) public view returns (Log memory) {

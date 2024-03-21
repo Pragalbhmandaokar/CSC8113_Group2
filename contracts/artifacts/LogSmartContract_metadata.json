@@ -8,33 +8,24 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "_dataUsageSmartContractAddress",
-						"type": "address"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "constructor"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": false,
 						"internalType": "uint256",
-						"name": "dataUsageId",
+						"name": "_actorId",
 						"type": "uint256"
-					}
-				],
-				"name": "LogAdded",
-				"type": "event"
-			},
-			{
-				"inputs": [
+					},
 					{
-						"internalType": "uint256",
-						"name": "_dataUsageId",
-						"type": "uint256"
+						"internalType": "string",
+						"name": "_operation",
+						"type": "string"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_processPersonalData",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "string",
+						"name": "_serviceName",
+						"type": "string"
 					}
 				],
 				"name": "addLog",
@@ -46,7 +37,7 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "_dataUsageId",
+						"name": "_dataActorId",
 						"type": "uint256"
 					}
 				],
@@ -56,18 +47,13 @@
 						"components": [
 							{
 								"internalType": "uint256",
-								"name": "dataUsageId",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
 								"name": "actorId",
 								"type": "uint256"
 							},
 							{
-								"internalType": "string[]",
+								"internalType": "string",
 								"name": "operations",
-								"type": "string[]"
+								"type": "string"
 							},
 							{
 								"internalType": "string",
@@ -75,9 +61,9 @@
 								"type": "string"
 							},
 							{
-								"internalType": "bytes32[]",
+								"internalType": "bytes32",
 								"name": "processedPersonalDatas",
-								"type": "bytes32[]"
+								"type": "bytes32"
 							}
 						],
 						"internalType": "struct LogSmartContract.Log",
@@ -164,19 +150,19 @@
 			]
 		},
 		"contracts/DataUsageSmartContract.sol": {
-			"keccak256": "0xbced40c5f60935b6e7adde9878200b3fcb9db3bfa258f7819265dc138836f833",
+			"keccak256": "0x466a9a469babca64998bff985eebb1e85bcc82e283ef8af5803ef910e97e9bf1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8ba8703bb4976dc5891b05591b1e9a64bdfd721e7a97d3edc71e5301909c6a22",
-				"dweb:/ipfs/QmXnCFyBtijtKJWxzSTej3QG9jNfXxW9TBT46ZcpX6CoRM"
+				"bzz-raw://f2aa527e4478f8d59aca41fd6cb25fba7b8cf4923ce025ef8b0758dc317c20ef",
+				"dweb:/ipfs/QmXAPJRf9gqBunYwmAVF8Xs8yXGhKKJiAWDqL2QijNKoNC"
 			]
 		},
 		"contracts/LogSmartContract.sol": {
-			"keccak256": "0x818465c573e34d76167db016e64f046acaa6ede3ed860cf0764de7d156fb1f3b",
+			"keccak256": "0x970387bc9810c6b40aa2d28df9c9e34badb8657b4440541bfb35fa2269ea0e03",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://154c24c5a15b8eb02d8aebd7b9db5a9e27f1bca7ffe228651988b204d48a0a0f",
-				"dweb:/ipfs/QmXWUtSt5E2jeejLfnRjHZ8rVL6hWRDJ3wsAYmqDL6odhz"
+				"bzz-raw://cc5a5254070511a7749c8b3a73aa635e08222d82431920817daf66ea067a5325",
+				"dweb:/ipfs/Qmaktiyf81hYg4Rd4qRfha7gazzrSfutRmEa15PbHoZdnZ"
 			]
 		}
 	},

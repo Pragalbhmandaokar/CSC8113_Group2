@@ -6,12 +6,16 @@ import "./AccessControl.sol";
 contract DataUsageSmartContract is AccessControl {
 
     // Struct
-
+    enum Operation{
+        read,
+        write,
+        transaction
+    }
     struct DataUsage {
         string serviceName;
         string servicePurpose;
         uint actorId;                       // associated with the actor
-        string[] operations;                //  == "read", "write", "transfer"(multiple)
+        Operation operations;                //  == "read", "write", "transfer"(multiple)
         uint personalDataIds;             // associated with proccessedPersonalData(byte32)
         bytes32 processedPersonalDatas;
     }
@@ -21,27 +25,24 @@ contract DataUsageSmartContract is AccessControl {
         string userName;
         string userAddress;
         string userTelephone;
-        string[] additionalInfos;
     }
     
     // Mapping
-    mapping(uint => DataUsage) private dataUsages;              // mapping dataUsages <uint dataUsageId, DataUsage theDataUsage>
-    mapping(uint => PersonalData) private personalDatas;        // mapping personalDatas <uint personalDataId, PersonalData thePersonalData>
-   
+     mapping(uint => DataUsage) private dataUsages;              // mapping dataUsages <uint dataUsageId, DataUsage theDataUsage>
+    // mapping(bytes32 => DataUsage) public mapHashedDataUsage;
     // Store Key of Mappings
     
     uint private dataUsageCounter = 0;
     uint[] private actorIds;
     uint private personalDataCounter = 0;
-
+    
     // event emitProcessorPersonalData(bytes32 processPersonalData);
     // ------ mapping : personalDatas ---- : add\get PersonalData functions are "public onlyOwner", getCounter function is "public view"
     function addPersonalData(
         uint _userId,
         string memory  _userName,
         string memory  _userAddress,
-        string memory  _userTelephone,
-        string[] memory additionalInfos
+        string memory  _userTelephone
     ) public pure returns (bytes32) {
          // Initialize a variable to concatenate the personal data fields
         bytes memory dataToHash;
@@ -52,9 +53,7 @@ contract DataUsageSmartContract is AccessControl {
             _userAddress,
             _userTelephone
         );
-    for (uint i = 0; i < additionalInfos.length; i++) {
-                dataToHash = abi.encodePacked(dataToHash, additionalInfos[i]);
-            }
+   
         // Generate the hash of the concatenated data 
         bytes32 processedPersonalData = keccak256(dataToHash);
         return processedPersonalData;
@@ -65,14 +64,12 @@ contract DataUsageSmartContract is AccessControl {
         return personalDataCounter;
     }
 
-    
-
     // ------ mapping : dataUsages ---- : add function is "public onlyOwner", get functions are "public view"
     function addDataUsage(
         string memory _serviceName,
         string memory _servicePurpose,
         uint _actorId,
-        string[] memory _operations,
+        Operation _operations,
         uint _personalDataIds,
         bytes32 _proceedPersonalData
     ) public onlyOwner {
