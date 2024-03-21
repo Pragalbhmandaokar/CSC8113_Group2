@@ -54,7 +54,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"tests/Verification_test.sol": "DataUsageSmartTestCases"
+			"tests/DataUsageTest.sol": "DataUsageSmartTestCases"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -92,12 +92,12 @@
 				"dweb:/ipfs/QmdkW1tT5iadBvaHMCoskhDGZKnfdg8o1D9CcoQYtdJet7"
 			]
 		},
-		"tests/Verification_test.sol": {
-			"keccak256": "0xd60c3005dad737b4e8ee4ba4f96bfd52d72975252af936f90792939e6b67a311",
+		"tests/DataUsageTest.sol": {
+			"keccak256": "0xe1e36504b9d1b3dbef9ad6d83661ccdc1434e1db49eb5aa534da78012cfda9d4",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://b89ae49f4bbe15397fd8ce4879c698378a3813d23f3c01848787951f21505a3c",
-				"dweb:/ipfs/Qmdn5twvAyNmbHaAKCqrot5ifvJifFCGcc4AengMjK8peW"
+				"bzz-raw://d9e7132b3a8b3f34d59e2d0e1b5ac78e6549ba60799f68d73f49ed18f349a0e4",
+				"dweb:/ipfs/QmQXremAsapSfo2TYQXoXN3yYnRF4S2XnDAru6F48baF58"
 			]
 		}
 	},

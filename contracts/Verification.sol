@@ -90,6 +90,7 @@ contract Verification is AccessControl {
     */
 
     function getViolators() public view returns (uint[] memory) {
+        require(violators.length == 0, "violator is empty");
         return violators;
     }
 }

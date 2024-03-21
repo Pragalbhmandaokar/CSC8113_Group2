@@ -10,7 +10,6 @@ contract AgreementSmartContract is AccessControl {
     struct Consent {
         address purposeBlockAddress;        // = dataUsageSmartContractAddress, input
         uint userId;                        // input
-        uint dataUsageId;                   // can get the dataUsage, input
         bool isConsented;                   // positive == true / negative == false, input
         string servicePurpose;              // retrieve from this dataUsage
     }
@@ -38,28 +37,26 @@ contract AgreementSmartContract is AccessControl {
     function addConsent(
         address _purposeBlockAddress,
         uint _userId,
-        uint _dataUsageId,
         bool _isConsented
     ) public onlyOwner {
         // Retrieve service purpose from data usage smart contract
-        DataUsageSmartContract.DataUsage memory dataUsage = dataUsageSmartContract.getDataUsageByKey(_dataUsageId);
+        DataUsageSmartContract.DataUsage memory dataUsage = dataUsageSmartContract.getDataUsageByKey(_userId);
         
-        consents[_dataUsageId] = Consent({
+        consents[_userId] = Consent({
             purposeBlockAddress: _purposeBlockAddress,
             userId: _userId,
-            dataUsageId: _dataUsageId,
             isConsented: _isConsented,
             servicePurpose: dataUsage.servicePurpose
         });
         
-        consentKeys.push(_dataUsageId);
+        consentKeys.push(_userId);
         consentsCounter++;
 
-        emit ConsentAdded(_dataUsageId);
+        emit ConsentAdded(_userId);
     }
 
     function getConsentByKey(uint _dataUsageId) public view returns (Consent memory) {
-        // require(consents[_dataUsageId].dataUsageId != 0, "Consent does not exist.");
+        require(consents[_dataUsageId].userId != 0, "Consent does not exist.");
         return consents[_dataUsageId];
     }
 

@@ -10,7 +10,7 @@ contract DataUsageSmartContract is AccessControl {
     struct DataUsage {
         string serviceName;
         string servicePurpose;
-        uint actorId;                       // associated with the actor
+        uint actorConsentId;                       // associated with the actor
         string[] operations;                //  == "read", "write", "transfer"(multiple)
         uint[] personalDataIds;             // associated with proccessedPersonalData(byte32)
         bytes32[] processedPersonalDatas;
@@ -37,7 +37,7 @@ contract DataUsageSmartContract is AccessControl {
     mapping(uint => bytes32) private processedPersonalDatas;    // mapping processedPersonalDatas <uint personalDataId, byte32 theProcessedPersonalData>
 
     // Store Key of Mappings
-
+    
     uint private dataUsageCounter = 0;
     uint[] private actorIds;
     uint private personalDataCounter = 0;
@@ -67,7 +67,7 @@ contract DataUsageSmartContract is AccessControl {
     }
 
     function getPersonalDataByKey(uint _personalDataId) public view returns (PersonalData memory) {
-        // require(_personalDataId < personalDataCounter, "PersonalData does not exist.");
+         require(personalDatas[_personalDataId].userId != 0, "PersonalData does not exist.");
         return personalDatas[_personalDataId];
     }
 
@@ -106,7 +106,7 @@ contract DataUsageSmartContract is AccessControl {
     }
 
     function getProcessedPersonalDataByKey(uint _personalDataId) public view returns (bytes32) {
-        // require(_personalDataId < personalDataCounter, "ProcessedPersonalData does not exist.");
+        // require(processedPersonalDatas[_personalDataId] < personalDataCounter, "ProcessedPersonalData does not exist.");
         return processedPersonalDatas[_personalDataId];
     }
 
@@ -137,7 +137,7 @@ contract DataUsageSmartContract is AccessControl {
         string[] memory _operations,
         uint[] memory _personalDataIds
     ) public onlyOwner {
-        uint newDataUsageId = dataUsageCounter++;
+      
         bytes32[] memory processedDatas = new bytes32[](_personalDataIds.length);
         
         for (uint i = 0; i < _personalDataIds.length; i++) {
@@ -146,10 +146,10 @@ contract DataUsageSmartContract is AccessControl {
         }
 
         // Add the new DataUsage with the processedPersonalDatas included
-        dataUsages[newDataUsageId] = DataUsage({
+        dataUsages[_actorId] = DataUsage({
             serviceName: _serviceName,
             servicePurpose: _servicePurpose,
-            actorId: _actorId,
+            actorConsentId: _actorId,
             operations: _operations,
             personalDataIds: _personalDataIds,
             processedPersonalDatas: processedDatas
@@ -158,13 +158,12 @@ contract DataUsageSmartContract is AccessControl {
         // Update the counter for the data usage
         dataUsageCounter++;
 
-        emit DataUsageAdded(newDataUsageId);
     }
 
 
-    function getDataUsageByKey(uint _dataUsageId) public view returns (DataUsage memory) {
-        // require(_dataUsageId < dataUsageCounter, "DataUsage does not exist.");
-        return dataUsages[_dataUsageId];
+    function getDataUsageByKey(uint _actorConsentId) public view returns (DataUsage memory) {
+        require(dataUsages[_actorConsentId].actorConsentId != 0, "Data User does not exist.");
+        return dataUsages[_actorConsentId];
     }
 
     function getDataUsageCounter() public view returns (uint) {

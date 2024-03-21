@@ -35,10 +35,12 @@ contract LogSmartContract is AccessControl {
         require(_dataUsageSmartContractAddress != address(0), "DataUsageSmartContract address is invalid.");
     }
 
-    // Function
+    // Function 
 
     function addLog(uint _dataUsageId) public onlyOwner {
         // Retrieve the associated DataUsage record to ensure it exists
+        //require(_dataUsageId < dataUsageSmartContract.getDataUsageCounter(),"Transaction number out of bounds");
+
         DataUsageSmartContract.DataUsage memory dataUsage = dataUsageSmartContract.getDataUsageByKey(_dataUsageId);
 
         // Initialize processedPersonalDatas array for the log, assuming DataUsage contract provides a method to get processed data
@@ -50,7 +52,7 @@ contract LogSmartContract is AccessControl {
         // Create the log record
         logs[_dataUsageId] = Log({
             dataUsageId: _dataUsageId,
-            actorId: dataUsage.actorId,
+            actorId: dataUsage.actorConsentId,
             operations: dataUsage.operations,
             serviceName: dataUsage.serviceName,
             processedPersonalDatas: processedDatas
@@ -63,7 +65,6 @@ contract LogSmartContract is AccessControl {
     }
 
     function getLogByKey(uint _dataUsageId) public view returns (Log memory) {
-        //require(logs[_dataUsageId].dataUsageId != 0, "Log does not exist.");
         return logs[_dataUsageId];
     }
 
