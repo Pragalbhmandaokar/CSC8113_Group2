@@ -31,15 +31,11 @@ contract Verification is AccessControl {
     }
     
     function verifyCompliance() public onlyOwner {
-        uint[] memory logKeys = logSmartContract.getLogKeys();
-        uint[] memory consentKeys = agreementSmartContract.getConsentKeys();
-
-        for (uint i = 0; i < logKeys.length; i++) {
-            uint logKey = logKeys[i];
+        
+      
             LogSmartContract.Log memory log = logSmartContract.getLogByKey(logKey);
 
-            for (uint j = 0; j < consentKeys.length; j++) {
-                uint consentKey = consentKeys[j];
+           
                 if (logKey == consentKey) {
                     AgreementSmartContract.Consent memory consent = agreementSmartContract.getConsentByKey(consentKey);
                     DataUsageSmartContract.DataUsage memory dataUsage = dataUsageSmartContract.getDataUsageByKey(logKey);
@@ -75,8 +71,8 @@ contract Verification is AccessControl {
                     if (isViolation) {
                         violators.push(log.actorId);
                     }
-                }
-            }
+                
+            
         }
     }
 

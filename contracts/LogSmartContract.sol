@@ -7,18 +7,15 @@ import "./DataUsageSmartContract.sol";
 contract LogSmartContract is AccessControl {
 
     // Struct
-
     struct Log {
-        uint dataUsageId;                                // can get the specific dataUsage, input
         uint actorId;                                    // below all data get from this dataUsage
-        string[] operations;
-        bytes32 serviceName;
-        bytes32[] processedPersonalDatas;
+        string operations;
+        string serviceName;
+        bytes32 processedPersonalDatas;
     }
 
     // Associate with the DataUsageSmartContract
     DataUsageSmartContract private dataUsageSmartContract;
-
     // Mapping
 
     mapping(uint => Log) private logs;                  // mapping logs <uint dataUsageId, Log theLog>
@@ -36,35 +33,22 @@ contract LogSmartContract is AccessControl {
 
     // Function 
 
-    function addLog(uint _dataUsageId) public onlyOwner {
+    function addLog(uint _actorId,string memory _operation, bytes32 _processPersonalData, string memory _serviceName) public onlyOwner {
         // Retrieve the associated DataUsage record to ensure it exists
         //require(_dataUsageId < dataUsageSmartContract.getDataUsageCounter(),"Transaction number out of bounds");
 
-        DataUsageSmartContract.DataUsage memory dataUsage = dataUsageSmartContract.getDataUsageByKey(_dataUsageId);
-
-        // Initialize processedPersonalDatas array for the log, assuming DataUsage contract provides a method to get processed data
-        bytes32[] memory processedDatas = new bytes32[](dataUsage.personalDataIds.length);
-        for(uint i = 0; i < dataUsage.personalDataIds.length; ++i) {
-            processedDatas[i] = dataUsageSmartContract.getProcessedPersonalDataByKey(dataUsage.personalDataIds[i]);
-        }
-
         // Create the log record
-        logs[_dataUsageId] = Log({
-            dataUsageId: _dataUsageId,
-            actorId: dataUsage.actorId,
-            operations: dataUsage.operations,
-            serviceName: dataUsage.serviceName,
-            processedPersonalDatas: processedDatas
+        logs[_actorId] = Log({
+            actorId: _actorId,
+            operations: _operation,
+            serviceName: _serviceName,
+            processedPersonalDatas: _processPersonalData
         });
 
-        logKeys.push(_dataUsageId);
-        logCounter++;
-
-        emit LogAdded(_dataUsageId);
     }
 
-    function getLogByKey(uint _dataUsageId) public view returns (Log memory) {
-        return logs[_dataUsageId];
+    function getLogByKey(uint _dataActorId) public view returns (Log memory) {
+        return logs[_dataActorId];
     }
 
     function getLogCounter() public view returns (uint) {

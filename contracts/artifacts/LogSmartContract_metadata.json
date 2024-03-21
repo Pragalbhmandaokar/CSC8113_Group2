@@ -70,9 +70,9 @@
 								"type": "string[]"
 							},
 							{
-								"internalType": "bytes32",
+								"internalType": "string",
 								"name": "serviceName",
-								"type": "bytes32"
+								"type": "string"
 							},
 							{
 								"internalType": "bytes32[]",
@@ -164,19 +164,19 @@
 			]
 		},
 		"contracts/DataUsageSmartContract.sol": {
-			"keccak256": "0xc14c7200097d019523a0b8ae8a1ada296d07d9d5da04988853fdf423b82046a3",
+			"keccak256": "0xbced40c5f60935b6e7adde9878200b3fcb9db3bfa258f7819265dc138836f833",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://bce9a665a097ba9e230687ba99b8e4f91937945fe039657978e63270135f75b5",
-				"dweb:/ipfs/QmSdEUfX6d7YXY3zYZpCsyxirjaCJKxDLWyrsZEVehUeQB"
+				"bzz-raw://8ba8703bb4976dc5891b05591b1e9a64bdfd721e7a97d3edc71e5301909c6a22",
+				"dweb:/ipfs/QmXnCFyBtijtKJWxzSTej3QG9jNfXxW9TBT46ZcpX6CoRM"
 			]
 		},
 		"contracts/LogSmartContract.sol": {
-			"keccak256": "0x1aee2057ed2f3c4c507b155d2e800d9baed12a0824e5d23558e06ff0b0874d84",
+			"keccak256": "0x818465c573e34d76167db016e64f046acaa6ede3ed860cf0764de7d156fb1f3b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://093b89b855935a0705e1f0589d7d7e16026756ca117b09f2edfce5a31446d3d3",
-				"dweb:/ipfs/QmZ18BpQJTFsiqXL8gr8HVywsr3xWwKLriDG5KiGS21LWy"
+				"bzz-raw://154c24c5a15b8eb02d8aebd7b9db5a9e27f1bca7ffe228651988b204d48a0a0f",
+				"dweb:/ipfs/QmXWUtSt5E2jeejLfnRjHZ8rVL6hWRDJ3wsAYmqDL6odhz"
 			]
 		}
 	},
