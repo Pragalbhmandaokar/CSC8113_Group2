@@ -24,7 +24,9 @@ contract AgreementSmartContract is AccessControl {
     uint[] private consentKeys;                         // key  = Consent.dataUsageId(uint)
     uint private consentsCounter = 0;                   // counter,(start from 0, ++ when add)
 
-    
+    // Event
+    event ConsentAdded(uint dataUsageId);
+
     // Constructor
     constructor(address _dataUsageSmartContractAddress) {
         dataUsageSmartContract = DataUsageSmartContract(_dataUsageSmartContractAddress);
@@ -50,6 +52,7 @@ contract AgreementSmartContract is AccessControl {
         consentKeys.push(_userId);
         consentsCounter++;
 
+        emit ConsentAdded(_userId);
     }
 
     function getConsentByKey(uint _dataUsageId) public view returns (Consent memory) {

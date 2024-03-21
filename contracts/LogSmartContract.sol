@@ -7,20 +7,18 @@ import "./DataUsageSmartContract.sol";
 contract LogSmartContract is AccessControl {
 
     // Struct
-
     struct Log {
         uint dataUsageId;                                // can get the specific dataUsage, input
         uint actorId;                                    // below all data get from this dataUsage
         string[] operations;
-        bytes32 serviceName;
+        string serviceName;
         bytes32[] processedPersonalDatas;
     }
 
     // Associate with the DataUsageSmartContract
     DataUsageSmartContract private dataUsageSmartContract;
-
+    
     // Mapping
-
     mapping(uint => Log) private logs;                  // mapping logs <uint dataUsageId, Log theLog>
     uint[] private logKeys;                             // key  = Log.dataUsageId(uint)
     uint private logCounter = 0;                        // counter,(start from 0, ++ when add)
@@ -37,7 +35,7 @@ contract LogSmartContract is AccessControl {
     // Function 
 
     function addLog(uint _dataUsageId) public onlyOwner {
-        // Retrieve the associated DataUsage record to ensure it exists
+        //Retrieve the associated DataUsage record to ensure it exists
         //require(_dataUsageId < dataUsageSmartContract.getDataUsageCounter(),"Transaction number out of bounds");
 
         DataUsageSmartContract.DataUsage memory dataUsage = dataUsageSmartContract.getDataUsageByKey(_dataUsageId);

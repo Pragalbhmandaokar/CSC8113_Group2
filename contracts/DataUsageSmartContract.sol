@@ -4,12 +4,11 @@ pragma solidity ^0.8.10;
 import "./AccessControl.sol";
 
 contract DataUsageSmartContract is AccessControl {
-
+    
     // Struct
-
     struct DataUsage {
-        bytes32 serviceName;
-        bytes32 servicePurpose;
+        string serviceName;
+        string servicePurpose;
         uint actorId;                       // associated with the actor
         string[] operations;                //  == "read", "write", "transfer"(multiple)
         uint[] personalDataIds;             // associated with proccessedPersonalData(byte32)
@@ -18,9 +17,9 @@ contract DataUsageSmartContract is AccessControl {
 
     struct PersonalData {
         uint userId;
-        bytes32 userName;
-        bytes32 userAddress;
-        bytes32 userTelephone;
+        string userName;
+        string userAddress;
+        string userTelephone;
         string[] additionalInfos;
     }
     
@@ -42,9 +41,9 @@ contract DataUsageSmartContract is AccessControl {
     // ------ mapping : personalDatas ---- : add\get PersonalData functions are "public onlyOwner", getCounter function is "public view"
     function addPersonalData(
         uint _userId,
-        bytes32  _userName,
-        bytes32  _userAddress,
-        bytes32  _userTelephone,
+        string memory  _userName,
+        string memory _userAddress,
+        string memory  _userTelephone,
         string[] memory additionalInfos
     ) public onlyOwner {
         personalDatas[_userId] = PersonalData({
@@ -104,8 +103,8 @@ contract DataUsageSmartContract is AccessControl {
 
     // ------ mapping : dataUsages ---- : add function is "public onlyOwner", get functions are "public view"
     function addDataUsage(
-        bytes32 _serviceName,
-        bytes32 _servicePurpose,
+        string memory _serviceName,
+        string memory _servicePurpose,
         uint _actorId,
         string[] memory _operations,
         uint[] memory _personalDataIds
