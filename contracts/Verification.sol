@@ -13,6 +13,7 @@ contract Verification is AccessControl {
         write,
         transfer
     }
+
     DataUsageSmartContract private dataUsageSmartContract;
     AgreementSmartContract private agreementSmartContract;
     LogSmartContract private logSmartContract;
@@ -57,8 +58,9 @@ contract Verification is AccessControl {
                     }
 
                     bool isViolation = false;
-                    if(log.operations != dataUsage.operations) {
+                    if(uint(log.operations) != uint(dataUsage.operations)) {
                         isViolation = true;
+                        emit ActorFlaggedAsViolator(log.actorId, "Operation performed is different");
                     } 
 
                     if (!isViolation) {
