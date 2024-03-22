@@ -23,8 +23,9 @@ contract TestVerification {
 
      function testVerifyComplianceMatchingLogsAndConsents() public {
         // Create matching logs and consents
-        dataUsageSmartContract.addDataUsage("Service1", "Purpose1", 1, DataUsageSmartContract.Operation.read, 1, "ProcessedData1");
+        dataUsageSmartContract.addDataUsage("Service1", "Purpose1", 1, DataUsageSmartContract.Operation.read, 1, "ProcessedData1");  
         agreementSmartContract.addConsent(address(dataUsageSmartContract), 1, true);
+        logSmartContract.addLog(1, LogSmartContract.Operations.write, "ProcessedData1", "Service1");
 
         // Call verifyCompliance function
         verification.verifyCompliance();

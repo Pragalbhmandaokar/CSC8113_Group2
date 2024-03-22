@@ -93,11 +93,11 @@
 			]
 		},
 		"contracts/LogSmartContract.sol": {
-			"keccak256": "0x6dbb6fda227a0903b928ac84ea0e3057031c40ab5b1ae5780c9c94d9dcde0d90",
+			"keccak256": "0xe4013f87f7b170ccdcf9b556f9f99a06e5332160e0f5ee35bf240e34a0c795d5",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://54d92f587c57b6336980fdfdacb4787cfc05161f8fa88741735deb718cd1f987",
-				"dweb:/ipfs/QmcXZAvoRe1HSGXt1asauhsjPEMZyWNJu1Yrs5tFXCYp8a"
+				"bzz-raw://433576869c286d6d3d8907369b3791efed01a64912d4cb706a1700334e26de2d",
+				"dweb:/ipfs/QmW51oXuofkjewuRNZwMRVm2Dj1BzN9qWExBagxPB46v2N"
 			]
 		},
 		"contracts/Verification.sol": {
@@ -117,11 +117,11 @@
 			]
 		},
 		"tests/Verification_test.sol": {
-			"keccak256": "0x07c5e88b6cc4495c4f87f01336d71d6192bca7794b84354efe5a20214317bf3a",
+			"keccak256": "0x33a7d424721231061b96ec72a82c8a2cbca8228a4eb448399e9813c0921e6198",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://5d5e7ecc63ad15f2232efe3ec2987b67fe785c49efaa92e201ebcdb047d0729c",
-				"dweb:/ipfs/QmdxXKoy5cA9fKKSJaFVSJNoL79P4tT65tFFrkmrYUcsxY"
+				"bzz-raw://11979d5ebd13dfd3fcd2747819126d61db1a8ac354d430b9fd910df1d3b1ff9e",
+				"dweb:/ipfs/QmYAY6utpsiMzfcYypQeezyyAdbz3hpVKP1YQFr9iMo5fH"
 			]
 		}
 	},
