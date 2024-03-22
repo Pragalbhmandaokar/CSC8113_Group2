@@ -1,76 +1,51 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
 
-import "./AccessControl.sol";
-import "./DataUsageSmartContract.sol";
-
-contract LogSmartContract is AccessControl {
-
+contract LogSmartContract {
     // Struct
     struct Log {
-        uint dataUsageId;                                // can get the specific dataUsage, input
-        uint actorId;                                    // below all data get from this dataUsage
-        string[] operations;
-        string serviceName;
-        bytes32[] processedPersonalDatas;
+        bytes32 serviceName;
+        address actorAddress;
+        bytes32 operation;
+        bytes32[] personalDataList;
     }
 
-    // Associate with the DataUsageSmartContract
-    DataUsageSmartContract private dataUsageSmartContract;
-    
     // Mapping
-    mapping(uint => Log) private logs;                  // mapping logs <uint dataUsageId, Log theLog>
-    uint[] private logKeys;                             // key  = Log.dataUsageId(uint)
-    uint private logCounter = 0;                        // counter,(start from 0, ++ when add)
+    mapping(bytes32 => Log) public mapHashLog;
 
     // Event
-    event LogAdded(uint dataUsageId);
+    event LogAdded(bytes32 hashOfLog);
 
-    // Constructor
-    constructor(address _dataUsageSmartContractAddress) {
-        dataUsageSmartContract = DataUsageSmartContract(_dataUsageSmartContractAddress);
-        require(_dataUsageSmartContractAddress != address(0), "DataUsageSmartContract address is invalid.");
-    }
+    // Function to add a log entry and return the hash of the log
+    function addLog(
+        bytes32 _serviceName,
+        address _actorAddress,
+        bytes32 _operation,
+        bytes32[] memory _personalDataList
+    ) public returns (bytes32) {
+        // Generate the hash for the new log
+        bytes32 hashOfLog = keccak256(
+            abi.encodePacked(_serviceName, _actorAddress, _operation, _personalDataList)
+        );
 
-    // Function 
+        // Ensure the log is unique and doesn't already exist
+        require(
+            mapHashLog[hashOfLog].actorAddress == address(0),
+            "Log already exists for this hash."
+        );
 
-    function addLog(uint _dataUsageId) public onlyOwner {
-        //Retrieve the associated DataUsage record to ensure it exists
-        //require(_dataUsageId < dataUsageSmartContract.getDataUsageCounter(),"Transaction number out of bounds");
-
-        DataUsageSmartContract.DataUsage memory dataUsage = dataUsageSmartContract.getDataUsageByKey(_dataUsageId);
-
-        // Initialize processedPersonalDatas array for the log, assuming DataUsage contract provides a method to get processed data
-        bytes32[] memory processedDatas = new bytes32[](dataUsage.personalDataIds.length);
-        for(uint i = 0; i < dataUsage.personalDataIds.length; ++i) {
-            processedDatas[i] = dataUsageSmartContract.getProcessedPersonalDataByKey(dataUsage.personalDataIds[i]);
-        }
-
-        // Create the log record
-        logs[_dataUsageId] = Log({
-            dataUsageId: _dataUsageId,
-            actorId: dataUsage.actorId,
-            operations: dataUsage.operations,
-            serviceName: dataUsage.serviceName,
-            processedPersonalDatas: processedDatas
+        // Create and store the new log
+        mapHashLog[hashOfLog] = Log({
+            serviceName: _serviceName,
+            actorAddress: _actorAddress,
+            operation: _operation,
+            personalDataList: _personalDataList
         });
 
-        logKeys.push(_dataUsageId);
-        logCounter++;
+        // Emit the log added event
+        emit LogAdded(hashOfLog);
 
-        emit LogAdded(_dataUsageId);
-    }
-
-    function getLogByKey(uint _dataUsageId) public view returns (Log memory) {
-        return logs[_dataUsageId];
-    }
-
-    function getLogCounter() public view returns (uint) {
-        return logCounter;
-    }
-
-    function getLogKeys() public view returns (uint[] memory) {
-        return logKeys;
+        // Return the hash of the new log
+        return hashOfLog;
     }
 }
- 

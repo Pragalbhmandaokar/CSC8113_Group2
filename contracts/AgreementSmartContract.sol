@@ -1,71 +1,53 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
 
-import "./AccessControl.sol";
-import "./DataUsageSmartContract.sol";
-
-contract AgreementSmartContract is AccessControl {
+contract AgreementSmartContract {
 
     // Struct
     struct Consent {
-        address purposeBlockAddress;        // = dataUsageSmartContractAddress, input
-        uint userId;                        // input
-        bool isConsented;                   // positive == true / negative == false, input
-        string servicePurpose;              // retrieve from this dataUsage
+        address purposeBlockAddress;                 // the address of the DataUsageSmartContract after deployed into public blockchain
+        bytes32 purposeHashKeyOfDataUsage;           // Hash key of the data usage entry, Key of mapHashDataUsage = hash value of the properties in one data usage record
+        uint userId;                                 // ID of the user
+        bool isConsented;                            // the user's given consent (positive == true / negative == false)
     }
 
-    // Associate with the DataUsageSmartContract
+    // Mapping to store consents keyed by a hash
+    mapping(bytes32 => Consent) public mapHashConsent;
 
-    DataUsageSmartContract private dataUsageSmartContract;
+    // Event emitted when a new consent is added
+    event ConsentAdded(bytes32 hashOfConsent);
 
-    // Mapping
-
-    mapping(uint => Consent) private consents;          // mapping consents <uint dataUsageId, Consent theConsent>
-    uint[] private consentKeys;                         // key  = Consent.dataUsageId(uint)
-    uint private consentsCounter = 0;                   // counter,(start from 0, ++ when add)
-
-    // Event
-    event ConsentAdded(uint dataUsageId);
-
-    // Constructor
-    constructor(address _dataUsageSmartContractAddress) {
-        dataUsageSmartContract = DataUsageSmartContract(_dataUsageSmartContractAddress);
-        require(_dataUsageSmartContractAddress != address(0), "The DataUsageSmartContract Address does not exist.");
-    }
-
-    // Function
+    // Function to add a new consent record and return the hash of the consent
     function addConsent(
         address _purposeBlockAddress,
+        bytes32 _purposeHashKeyOfDataUsage,
         uint _userId,
         bool _isConsented
-    ) public onlyOwner {
-        // Retrieve service purpose from data usage smart contract
-        DataUsageSmartContract.DataUsage memory dataUsage = dataUsageSmartContract.getDataUsageByKey(_userId);
+    ) public returns (bytes32) {
         
-        consents[_userId] = Consent({
+        // Generate the hash for the new consent
+        bytes32 hashOfConsent = keccak256(
+            abi.encodePacked(_purposeBlockAddress, _purposeHashKeyOfDataUsage, _userId, _isConsented)
+        );
+
+        // Ensure the consent is unique and doesn't already exist
+        require(
+            mapHashConsent[hashOfConsent].userId == 0,
+            "A consent record with this hash already exists."
+        );
+
+        // Create and store the new consent
+        mapHashConsent[hashOfConsent] = Consent({
             purposeBlockAddress: _purposeBlockAddress,
+            purposeHashKeyOfDataUsage: _purposeHashKeyOfDataUsage,
             userId: _userId,
-            isConsented: _isConsented,
-            servicePurpose: dataUsage.servicePurpose
+            isConsented: _isConsented
         });
-        
-        consentKeys.push(_userId);
-        consentsCounter++;
 
-        emit ConsentAdded(_userId);
+        // Emit an event for the new consent
+        emit ConsentAdded(hashOfConsent);
+
+        // Return the hash of the new consent
+        return hashOfConsent;
     }
-
-    function getConsentByKey(uint _dataUsageId) public view returns (Consent memory) {
-        require(consents[_dataUsageId].userId != 0, "Consent does not exist.");
-        return consents[_dataUsageId];
-    }
-
-    function getConsentCounter() public view returns (uint) {
-        return consentsCounter;
-    }
-
-    function getConsentKeys() public view returns (uint[] memory) {
-        return consentKeys;
-    }
-
 }
