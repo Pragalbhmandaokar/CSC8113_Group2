@@ -23,16 +23,16 @@ contract LogSmartContractTest {
     
     function testAddLog() public {
         uint actorId = 123;
-        string memory operation = "Read";
+        uint operation = 0;
         bytes32 processPersonalData = bytes32("SomeData");
         string memory serviceName = "Service1";
 
-        logContract.addLog(actorId, operation, processPersonalData, serviceName);
+        logContract.addLog(actorId, LogSmartContract.Operations.read, processPersonalData, serviceName);
 
         LogSmartContract.Log memory log = logContract.getLogByKey(actorId);
 
         Assert.equal(log.actorId, actorId, "Actor ID should match");
-        Assert.equal(log.operations, operation, "Operation should match");
+        Assert.equal(uint(log.operations), uint(operation), "Operation should match");
         Assert.equal(log.processedPersonalDatas, processPersonalData, "Processed personal data should match");
         Assert.equal(log.serviceName, serviceName, "Service name should match");
     }
@@ -41,7 +41,7 @@ contract LogSmartContractTest {
         uint initialCounter = logContract.getLogCounter();
         Assert.equal(initialCounter, 0, "Initial log counter should be zero");
 
-        logContract.addLog(1, "Read", bytes32("Data"), "Service1");
+        logContract.addLog(1, LogSmartContract.Operations.read, bytes32("Data"), "Service1");
 
         uint updatedCounter = logContract.getLogCounter();
         Assert.equal(updatedCounter, 1, "Log counter should be incremented after adding a log");
@@ -49,7 +49,7 @@ contract LogSmartContractTest {
 
     function testLogKeys() public {
         uint actorId = 123;
-        logContract.addLog(actorId, "Read", bytes32("Data"), "Service1");
+        logContract.addLog(actorId,LogSmartContract.Operations.read, bytes32("Data"), "Service1");
 
         uint[] memory keys = logContract.getLogKeys();
 

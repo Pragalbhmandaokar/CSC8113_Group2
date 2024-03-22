@@ -5,12 +5,12 @@ import "./AccessControl.sol";
 import "./DataUsageSmartContract.sol";
 
 contract LogSmartContract is AccessControl {
-
-     enum Operations{
+    enum Operations{
         read,
         write,
         transfer
     }
+
     // Struct
     struct Log {
         uint actorId;                                    // below all data get from this dataUsage

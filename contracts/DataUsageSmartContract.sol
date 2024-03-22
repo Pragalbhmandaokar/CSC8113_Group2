@@ -11,6 +11,7 @@ contract DataUsageSmartContract is AccessControl {
         write,
         transaction
     }
+    
     struct DataUsage {
         string serviceName;
         string servicePurpose;

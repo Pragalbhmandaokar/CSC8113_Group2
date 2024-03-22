@@ -1,0 +1,129 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "beforeEach",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testGetViolators",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testVerifyComplianceMatchingLogsAndConsents",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testVerifyComplianceNonMatchingOperations",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testVerifyComplianceNonMatchingProcessedPersonalData",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"tests/Verification_test.sol": "TestVerification"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/AccessControl.sol": {
+			"keccak256": "0xdfdcf8b60f0514ab6840939fe3637ebe36764180a9563fb5587fc2f4a8d71935",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://13d9fbbb25926ed11f3d043d2fc1c5ce98f264aeb330356a25cd86e3279fc43c",
+				"dweb:/ipfs/QmQnGDgLmvzNrNTDGM5HpgNdDcqG8PBRdCBaQ8H7EwfmZn"
+			]
+		},
+		"contracts/AgreementSmartContract.sol": {
+			"keccak256": "0x6fcc2c474cb94a83e00f0c629cc90ad161eec3bf3ab0ea088ea3eb1423f7a0b7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0a6d7f1abcc0eabd7c7e879684387458e1d09ba7dd0733864ffa8853f92f5744",
+				"dweb:/ipfs/QmSzykWauy93v9oE4ziKkdNRiUCEwHAfp8AQejDdBcQnSY"
+			]
+		},
+		"contracts/DataUsageSmartContract.sol": {
+			"keccak256": "0x8a9beaf94c07f37297b2a22232e7c38661ba1938d03d22a3eb87677129272b4d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e49a782445f4ccdaafcc3e19aa69a0530a1da71565277277fb4fad2a4828f0de",
+				"dweb:/ipfs/QmZXoe4f6h9BAzLZP19gLj2DbjxhppXwG4aPdjJssSKv2n"
+			]
+		},
+		"contracts/LogSmartContract.sol": {
+			"keccak256": "0x6dbb6fda227a0903b928ac84ea0e3057031c40ab5b1ae5780c9c94d9dcde0d90",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://54d92f587c57b6336980fdfdacb4787cfc05161f8fa88741735deb718cd1f987",
+				"dweb:/ipfs/QmcXZAvoRe1HSGXt1asauhsjPEMZyWNJu1Yrs5tFXCYp8a"
+			]
+		},
+		"contracts/Verification.sol": {
+			"keccak256": "0x71e68732e9e030bf189c24dc7589e2b3b7c1839daa24b75bdaec0010220478e7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e16a953e23db862dd11aa95284a23dc9fb8b2972d32ac30bad6742d1e2c91fdd",
+				"dweb:/ipfs/QmUF3vktnfMPMS93XkB83utqaRqgmvoTm7GtJa4KSCGmSa"
+			]
+		},
+		"remix_tests.sol": {
+			"keccak256": "0xe2783cdc204cba8c72494119339f1d90f9022b15d6c718c668b7f097d8e29787",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://bb6a22e64c7f16bcaab63b1c1a1b269d5be8a6d37bdd9dec1718477ab916b18e",
+				"dweb:/ipfs/QmdkW1tT5iadBvaHMCoskhDGZKnfdg8o1D9CcoQYtdJet7"
+			]
+		},
+		"tests/Verification_test.sol": {
+			"keccak256": "0x07c5e88b6cc4495c4f87f01336d71d6192bca7794b84354efe5a20214317bf3a",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://5d5e7ecc63ad15f2232efe3ec2987b67fe785c49efaa92e201ebcdb047d0729c",
+				"dweb:/ipfs/QmdxXKoy5cA9fKKSJaFVSJNoL79P4tT65tFFrkmrYUcsxY"
+			]
+		}
+	},
+	"version": 1
+}
