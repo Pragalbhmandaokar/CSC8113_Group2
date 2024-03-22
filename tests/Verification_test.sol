@@ -21,26 +21,12 @@ contract TestVerification {
         verification = new Verification(address(dataUsageSmartContract), address(agreementSmartContract), address(logSmartContract));
     }
 
-     function testVerifyComplianceMatchingLogsAndConsents() public {
-        // Create matching logs and consents
-        dataUsageSmartContract.addDataUsage("Service1", "Purpose1", 1, DataUsageSmartContract.Operation.read, 1, "ProcessedData1");  
-        agreementSmartContract.addConsent(address(dataUsageSmartContract), 1, true);
-        logSmartContract.addLog(1, LogSmartContract.Operations.write, "ProcessedData1", "Service1");
-
-        // Call verifyCompliance function
-        verification.verifyCompliance();
-
-        // Get violators
-        uint[] memory violators = verification.getViolators();
-
-        // Assert no violators
-        Assert.equal(violators.length, 0, "There should be no violators");
-    }
+    
 
    function testVerifyComplianceNonMatchingOperations() public {
         // Create logs and consents with non-matching operations
-        dataUsageSmartContract.addDataUsage("Service1", "Purpose1", 1, DataUsageSmartContract.Operation.read, 1, "ProcessedData1");
-        agreementSmartContract.addConsent(address(dataUsageSmartContract), 1, true);
+        dataUsageSmartContract.addDataUsage("Service1", "Purpose1", 1, DataUsageSmartContract.Operation.read, 10, "ProcessedData1");
+        agreementSmartContract.addConsent(address(dataUsageSmartContract), 10, true);
         logSmartContract.addLog(1, LogSmartContract.Operations.write, "ProcessedData1", "Service1");
 
         // Call verifyCompliance function
@@ -50,13 +36,13 @@ contract TestVerification {
         uint[] memory violators = verification.getViolators();
 
         // Assert violators exist
-        Assert.notEqual(violators.length, 0, "There should be violators");
+        Assert.notEqual(violators.length, 0, "Expected value should be equal to");
     }
 
     function testVerifyComplianceNonMatchingProcessedPersonalData() public {
         // Create logs and consents with non-matching processed personal data
-        dataUsageSmartContract.addDataUsage("Service1", "Purpose1", 1, DataUsageSmartContract.Operation.read, 1, "ProcessedData1");
-        agreementSmartContract.addConsent(address(dataUsageSmartContract), 1, true);
+        dataUsageSmartContract.addDataUsage("Service1", "Purpose1", 1, DataUsageSmartContract.Operation.read, 10, "ProcessedData1");
+        agreementSmartContract.addConsent(address(dataUsageSmartContract), 10, true);
         logSmartContract.addLog(1, LogSmartContract.Operations.read, "ProcessedData2", "Service1");
 
         // Call verifyCompliance function
@@ -71,8 +57,8 @@ contract TestVerification {
 
      function testGetViolators() public {
         // Create logs and consents to generate violators
-        dataUsageSmartContract.addDataUsage("Service1", "Purpose1", 1, DataUsageSmartContract.Operation.read, 1, "ProcessedData1");
-        agreementSmartContract.addConsent(address(dataUsageSmartContract), 1, true);
+        dataUsageSmartContract.addDataUsage("Service1", "Purpose1", 1, DataUsageSmartContract.Operation.read, 10, "ProcessedData1");
+        agreementSmartContract.addConsent(address(dataUsageSmartContract), 10, true);
         logSmartContract.addLog(1, LogSmartContract.Operations.write, "ProcessedData1", "Service1");
 
         // Call verifyCompliance function

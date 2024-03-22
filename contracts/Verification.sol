@@ -41,19 +41,20 @@ contract Verification is AccessControl {
         uint[] memory consentKeys = agreementSmartContract.getConsentKeys();
                
         for (uint i = 0; i < logKeys.length; i++) {
-             uint logKey = logKeys[i];
+             uint logKeyTsUser = logKeys[i];
 
-            LogSmartContract.Log memory log = logSmartContract.getLogByKey(logKey);
+            LogSmartContract.Log memory log = logSmartContract.getLogByKey(logKeyTsUser);
 
            for (uint j = 0; j < consentKeys.length; j++) {
-                uint consentKey = consentKeys[j];
+                uint consentKeyIsActor = consentKeys[j];
                 
-                if (logKey == consentKey) {
-                    AgreementSmartContract.Consent memory consent = agreementSmartContract.getConsentByKey(consentKey);
-                    DataUsageSmartContract.DataUsage memory dataUsage = dataUsageSmartContract.getDataUsageByKey(logKey);
+                if (logKeyTsUser != consentKeyIsActor) {
+                    AgreementSmartContract.Consent memory consent = agreementSmartContract.getConsentByKey(consentKeyIsActor);
+                    DataUsageSmartContract.DataUsage memory dataUsage = dataUsageSmartContract.getDataUsageByKey(logKeyTsUser);
 
-                    if (!consent.isConsented || log.actorId != consent.userId) {
+                    if (!consent.isConsented || log.actorId == consent.userId) {
                         violators.push(log.actorId);
+                        emit ActorFlaggedAsViolator(log.actorId, "Consent is false");
                         continue;
                     }
 

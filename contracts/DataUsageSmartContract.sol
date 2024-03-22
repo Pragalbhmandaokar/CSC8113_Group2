@@ -92,7 +92,6 @@ contract DataUsageSmartContract is AccessControl {
 
 
     function getDataUsageByKey(uint _actorConsentId) public view returns (DataUsage memory) {
-        require(dataUsages[_actorConsentId].actorId != 0, "Data User does not exist.");
         return dataUsages[_actorConsentId];
     }
 

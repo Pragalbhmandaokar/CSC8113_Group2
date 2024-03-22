@@ -23,13 +23,12 @@ contract LogSmartContract is AccessControl {
     mapping(uint => Log) private logs;                  // mapping logs <uint dataUsageId, Log theLog>
     uint[] private logKeys;                             // key  = Log.dataUsageId(uint)
     uint private logCounter = 0;                       // counter,(start from 0, ++ when add)
-
+    
     // Function 
 
     function addLog(uint _actorId,Operations _operation, bytes32 _processPersonalData, string memory _serviceName) public onlyOwner {
         // Retrieve the associated DataUsage record to ensure it exists
-        //require(_dataUsageId < dataUsageSmartContract.getDataUsageCounter(),"Transaction number out of bounds");
-
+      
         // Create the log record
         logs[_actorId] = Log({
             actorId: _actorId,
