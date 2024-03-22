@@ -6,10 +6,15 @@ import "./DataUsageSmartContract.sol";
 
 contract LogSmartContract is AccessControl {
 
+     enum Operations{
+        read,
+        write,
+        transfer
+    }
     // Struct
     struct Log {
         uint actorId;                                    // below all data get from this dataUsage
-        string operations;
+        Operations operations;
         string serviceName;
         bytes32 processedPersonalDatas;
     }
@@ -21,7 +26,7 @@ contract LogSmartContract is AccessControl {
 
     // Function 
 
-    function addLog(uint _actorId,string memory _operation, bytes32 _processPersonalData, string memory _serviceName) public onlyOwner {
+    function addLog(uint _actorId,Operations _operation, bytes32 _processPersonalData, string memory _serviceName) public onlyOwner {
         // Retrieve the associated DataUsage record to ensure it exists
         //require(_dataUsageId < dataUsageSmartContract.getDataUsageCounter(),"Transaction number out of bounds");
 

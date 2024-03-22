@@ -8,6 +8,11 @@ import "./LogSmartContract.sol";
 
 contract Verification is AccessControl {
 
+    enum Operations{
+        read,
+        write,
+        transfer
+    }
     DataUsageSmartContract private dataUsageSmartContract;
     AgreementSmartContract private agreementSmartContract;
     LogSmartContract private logSmartContract;
@@ -52,16 +57,9 @@ contract Verification is AccessControl {
                     }
 
                     bool isViolation = false;
-                    // if(log.operations.length != dataUsage.operations.length) {
-                    //     isViolation = true;
-                    // } else {
-                    //     for (uint k = 0; k < log.operations.length; k++) {
-                    //         if (keccak256(abi.encodePacked(log.operations[k])) != keccak256(abi.encodePacked(dataUsage.operations[k]))) {
-                    //             isViolation = true;
-                    //             break;
-                    //         }
-                    //     }
-                    // }
+                    if(log.operations != dataUsage.operations) {
+                        isViolation = true;
+                    } 
 
                     if (!isViolation) {
                             bytes32 logData = log.processedPersonalDatas;

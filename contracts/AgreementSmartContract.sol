@@ -13,7 +13,6 @@ contract AgreementSmartContract is AccessControl {
     }
 
     // Mapping
-
     mapping(uint => Consent) private consents;          // mapping consents <uint dataUsageId, Consent theConsent>
     uint[] private consentKeys;                         // key  = Consent.dataUsageId(uint)
     uint private consentsCounter = 0;                   // counter,(start from 0, ++ when add)

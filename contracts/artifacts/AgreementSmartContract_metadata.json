@@ -6,11 +6,29 @@
 	"output": {
 		"abi": [
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "hashOfConsent",
+						"type": "bytes32"
+					}
+				],
+				"name": "ConsentAdded",
+				"type": "event"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
 						"name": "_purposeBlockAddress",
 						"type": "address"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_purposeHashKeyOfDataUsage",
+						"type": "bytes32"
 					},
 					{
 						"internalType": "uint256",
@@ -24,80 +42,45 @@
 					}
 				],
 				"name": "addConsent",
-				"outputs": [],
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "_dataUsageId",
-						"type": "uint256"
-					}
-				],
-				"name": "getConsentByKey",
-				"outputs": [
-					{
-						"components": [
-							{
-								"internalType": "address",
-								"name": "purposeBlockAddress",
-								"type": "address"
-							},
-							{
-								"internalType": "uint256",
-								"name": "userId",
-								"type": "uint256"
-							},
-							{
-								"internalType": "bool",
-								"name": "isConsented",
-								"type": "bool"
-							}
-						],
-						"internalType": "struct AgreementSmartContract.Consent",
+						"internalType": "bytes32",
 						"name": "",
-						"type": "tuple"
+						"type": "bytes32"
 					}
 				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getConsentCounter",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getConsentKeys",
-				"outputs": [
-					{
-						"internalType": "uint256[]",
-						"name": "",
-						"type": "uint256[]"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "owner",
+				"name": "mapHashConsent",
 				"outputs": [
 					{
 						"internalType": "address",
-						"name": "",
+						"name": "purposeBlockAddress",
 						"type": "address"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "purposeHashKeyOfDataUsage",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "userId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isConsented",
+						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -117,7 +100,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/AgreementSmartContract.sol": "AgreementSmartContract"
+			"contracts/test.sol": "AgreementSmartContract"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -131,28 +114,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/AccessControl.sol": {
-			"keccak256": "0xdfdcf8b60f0514ab6840939fe3637ebe36764180a9563fb5587fc2f4a8d71935",
+		"contracts/test.sol": {
+			"keccak256": "0x8301a08f48b0d6dbe5a2ea80e201077a34a8f3c4d9057f42c587605fca21778c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://13d9fbbb25926ed11f3d043d2fc1c5ce98f264aeb330356a25cd86e3279fc43c",
-				"dweb:/ipfs/QmQnGDgLmvzNrNTDGM5HpgNdDcqG8PBRdCBaQ8H7EwfmZn"
-			]
-		},
-		"contracts/AgreementSmartContract.sol": {
-			"keccak256": "0x3ef143411345cc4cd2cf5a3573b3589df31264ba637e8bdbc93e151078efd897",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://c4a75223005b583908afad3072c36f9fba9e983745160a7932bcb50bdd17c4d3",
-				"dweb:/ipfs/QmVscFiUZgB5MGSJa8DvUELA9mVxKRBSFfoVEox2Af2nih"
-			]
-		},
-		"contracts/DataUsageSmartContract.sol": {
-			"keccak256": "0x57d64a836ffda049ca22fbb7d776fc9910555131755948498df3f63e01430ec7",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://114d856d7ff22b15dbc7750900164e7f7aec770314d99caa24710a99d36a0f54",
-				"dweb:/ipfs/QmW8kBeY3m4XLMpYUVChzjErD2HZeFok68bUTFoSJtt4EC"
+				"bzz-raw://68efc273dd7bde4298d4df8515e6fc5d5c31208d1a121c3cd67ebec76be1113e",
+				"dweb:/ipfs/QmVgieF9X4ey2tZ73fqHmqwuaiWXVPFjmN2bzS1c2JzbU1"
 			]
 		}
 	},

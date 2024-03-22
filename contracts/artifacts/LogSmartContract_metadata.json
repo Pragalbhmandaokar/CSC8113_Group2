@@ -13,9 +13,9 @@
 						"type": "uint256"
 					},
 					{
-						"internalType": "string",
+						"internalType": "enum LogSmartContract.Operations",
 						"name": "_operation",
-						"type": "string"
+						"type": "uint8"
 					},
 					{
 						"internalType": "bytes32",
@@ -51,9 +51,9 @@
 								"type": "uint256"
 							},
 							{
-								"internalType": "string",
+								"internalType": "enum LogSmartContract.Operations",
 								"name": "operations",
-								"type": "string"
+								"type": "uint8"
 							},
 							{
 								"internalType": "string",
@@ -158,11 +158,11 @@
 			]
 		},
 		"contracts/LogSmartContract.sol": {
-			"keccak256": "0x970387bc9810c6b40aa2d28df9c9e34badb8657b4440541bfb35fa2269ea0e03",
+			"keccak256": "0x6dbb6fda227a0903b928ac84ea0e3057031c40ab5b1ae5780c9c94d9dcde0d90",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://cc5a5254070511a7749c8b3a73aa635e08222d82431920817daf66ea067a5325",
-				"dweb:/ipfs/Qmaktiyf81hYg4Rd4qRfha7gazzrSfutRmEa15PbHoZdnZ"
+				"bzz-raw://54d92f587c57b6336980fdfdacb4787cfc05161f8fa88741735deb718cd1f987",
+				"dweb:/ipfs/QmcXZAvoRe1HSGXt1asauhsjPEMZyWNJu1Yrs5tFXCYp8a"
 			]
 		}
 	},
