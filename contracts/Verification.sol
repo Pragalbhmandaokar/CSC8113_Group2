@@ -14,7 +14,7 @@ contract Verification is AccessControl {
 
     uint[] private violators;                                   // Array to store the IDs of the actors that violated the agreements
 
-    event ActorFlaggedAsViolator(address indexed _actor,string  _serviceName,string _servicePurpose, string _violationMessage);
+    event ActorFlaggedAsViolator(uint _actor, string _violationMessage);
 
     constructor(
         address _dataUsageSmartContractAddress,
@@ -45,7 +45,7 @@ contract Verification is AccessControl {
                 if (logKey == consentKey) {
                     AgreementSmartContract.Consent memory consent = agreementSmartContract.getConsentByKey(consentKey);
                     DataUsageSmartContract.DataUsage memory dataUsage = dataUsageSmartContract.getDataUsageByKey(logKey);
-                    
+
                     if (!consent.isConsented || log.actorId != consent.userId) {
                         violators.push(log.actorId);
                         continue;
@@ -68,14 +68,15 @@ contract Verification is AccessControl {
                             bytes32 consentData = dataUsage.processedPersonalDatas;
                             if (logData != consentData) {
                                 isViolation = true;
-                                break;
-                            }
-                        
+                                emit ActorFlaggedAsViolator(log.actorId, "processed personal data doesnt match");
+                            }     
                     }
 
                     if (isViolation) {
                         violators.push(log.actorId);
+                        break;
                     }
+                    emit ActorFlaggedAsViolator(log.actorId, "Actor's address matched succesfully");
                 }
            }
         }
