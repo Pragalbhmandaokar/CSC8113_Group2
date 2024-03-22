@@ -18,7 +18,7 @@ contract Verification is AccessControl {
     AgreementSmartContract private agreementSmartContract;
     LogSmartContract private logSmartContract;
 
-    uint[] private violators;                                   // Array to store the IDs of the actors that violated the agreements
+    uint[] private violators;   // Array to store the IDs of the actors that violated the agreements
 
     event ActorFlaggedAsViolator(uint _actor, string _violationMessage);
 

@@ -6,29 +6,11 @@
 	"output": {
 		"abi": [
 			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": false,
-						"internalType": "bytes32",
-						"name": "hashOfConsent",
-						"type": "bytes32"
-					}
-				],
-				"name": "ConsentAdded",
-				"type": "event"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "address",
 						"name": "_purposeBlockAddress",
 						"type": "address"
-					},
-					{
-						"internalType": "bytes32",
-						"name": "_purposeHashKeyOfDataUsage",
-						"type": "bytes32"
 					},
 					{
 						"internalType": "uint256",
@@ -42,45 +24,80 @@
 					}
 				],
 				"name": "addConsent",
-				"outputs": [
-					{
-						"internalType": "bytes32",
-						"name": "",
-						"type": "bytes32"
-					}
-				],
+				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
 				"inputs": [
 					{
-						"internalType": "bytes32",
-						"name": "",
-						"type": "bytes32"
+						"internalType": "uint256",
+						"name": "_dataUsageId",
+						"type": "uint256"
 					}
 				],
-				"name": "mapHashConsent",
+				"name": "getConsentByKey",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "purposeBlockAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "userId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "isConsented",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct AgreementSmartContract.Consent",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getConsentCounter",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getConsentKeys",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
 				"outputs": [
 					{
 						"internalType": "address",
-						"name": "purposeBlockAddress",
+						"name": "",
 						"type": "address"
-					},
-					{
-						"internalType": "bytes32",
-						"name": "purposeHashKeyOfDataUsage",
-						"type": "bytes32"
-					},
-					{
-						"internalType": "uint256",
-						"name": "userId",
-						"type": "uint256"
-					},
-					{
-						"internalType": "bool",
-						"name": "isConsented",
-						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -100,7 +117,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/test.sol": "AgreementSmartContract"
+			"contracts/AgreementSmartContract.sol": "AgreementSmartContract"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -114,12 +131,28 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/test.sol": {
-			"keccak256": "0x8301a08f48b0d6dbe5a2ea80e201077a34a8f3c4d9057f42c587605fca21778c",
+		"contracts/AccessControl.sol": {
+			"keccak256": "0xdfdcf8b60f0514ab6840939fe3637ebe36764180a9563fb5587fc2f4a8d71935",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://68efc273dd7bde4298d4df8515e6fc5d5c31208d1a121c3cd67ebec76be1113e",
-				"dweb:/ipfs/QmVgieF9X4ey2tZ73fqHmqwuaiWXVPFjmN2bzS1c2JzbU1"
+				"bzz-raw://13d9fbbb25926ed11f3d043d2fc1c5ce98f264aeb330356a25cd86e3279fc43c",
+				"dweb:/ipfs/QmQnGDgLmvzNrNTDGM5HpgNdDcqG8PBRdCBaQ8H7EwfmZn"
+			]
+		},
+		"contracts/AgreementSmartContract.sol": {
+			"keccak256": "0x6fcc2c474cb94a83e00f0c629cc90ad161eec3bf3ab0ea088ea3eb1423f7a0b7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0a6d7f1abcc0eabd7c7e879684387458e1d09ba7dd0733864ffa8853f92f5744",
+				"dweb:/ipfs/QmSzykWauy93v9oE4ziKkdNRiUCEwHAfp8AQejDdBcQnSY"
+			]
+		},
+		"contracts/DataUsageSmartContract.sol": {
+			"keccak256": "0x8a9beaf94c07f37297b2a22232e7c38661ba1938d03d22a3eb87677129272b4d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e49a782445f4ccdaafcc3e19aa69a0530a1da71565277277fb4fad2a4828f0de",
+				"dweb:/ipfs/QmZXoe4f6h9BAzLZP19gLj2DbjxhppXwG4aPdjJssSKv2n"
 			]
 		}
 	},

@@ -204,11 +204,11 @@
 			]
 		},
 		"contracts/DataUsageSmartContract.sol": {
-			"keccak256": "0x57d64a836ffda049ca22fbb7d776fc9910555131755948498df3f63e01430ec7",
+			"keccak256": "0x8a9beaf94c07f37297b2a22232e7c38661ba1938d03d22a3eb87677129272b4d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://114d856d7ff22b15dbc7750900164e7f7aec770314d99caa24710a99d36a0f54",
-				"dweb:/ipfs/QmW8kBeY3m4XLMpYUVChzjErD2HZeFok68bUTFoSJtt4EC"
+				"bzz-raw://e49a782445f4ccdaafcc3e19aa69a0530a1da71565277277fb4fad2a4828f0de",
+				"dweb:/ipfs/QmZXoe4f6h9BAzLZP19gLj2DbjxhppXwG4aPdjJssSKv2n"
 			]
 		}
 	},
