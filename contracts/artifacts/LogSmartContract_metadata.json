@@ -8,33 +8,24 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "_dataUsageSmartContractAddress",
-						"type": "address"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "constructor"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": false,
 						"internalType": "uint256",
-						"name": "dataUsageId",
+						"name": "_actorId",
 						"type": "uint256"
-					}
-				],
-				"name": "LogAdded",
-				"type": "event"
-			},
-			{
-				"inputs": [
+					},
 					{
-						"internalType": "uint256",
-						"name": "_dataUsageId",
-						"type": "uint256"
+						"internalType": "enum LogSmartContract.Operations",
+						"name": "_operation",
+						"type": "uint8"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_processPersonalData",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "string",
+						"name": "_serviceName",
+						"type": "string"
 					}
 				],
 				"name": "addLog",
@@ -46,7 +37,7 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "_dataUsageId",
+						"name": "_dataActorId",
 						"type": "uint256"
 					}
 				],
@@ -56,28 +47,23 @@
 						"components": [
 							{
 								"internalType": "uint256",
-								"name": "dataUsageId",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
 								"name": "actorId",
 								"type": "uint256"
 							},
 							{
-								"internalType": "string[]",
+								"internalType": "enum LogSmartContract.Operations",
 								"name": "operations",
-								"type": "string[]"
+								"type": "uint8"
+							},
+							{
+								"internalType": "string",
+								"name": "serviceName",
+								"type": "string"
 							},
 							{
 								"internalType": "bytes32",
-								"name": "serviceName",
-								"type": "bytes32"
-							},
-							{
-								"internalType": "bytes32[]",
 								"name": "processedPersonalDatas",
-								"type": "bytes32[]"
+								"type": "bytes32"
 							}
 						],
 						"internalType": "struct LogSmartContract.Log",
@@ -164,19 +150,19 @@
 			]
 		},
 		"contracts/DataUsageSmartContract.sol": {
-			"keccak256": "0xc14c7200097d019523a0b8ae8a1ada296d07d9d5da04988853fdf423b82046a3",
+			"keccak256": "0xb2f2ccf03150034a5a054c490aae288ad91778982f7f8c0acaef99c03d312e91",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://bce9a665a097ba9e230687ba99b8e4f91937945fe039657978e63270135f75b5",
-				"dweb:/ipfs/QmSdEUfX6d7YXY3zYZpCsyxirjaCJKxDLWyrsZEVehUeQB"
+				"bzz-raw://c86b2089fdb1de11a98e0e21d60395d4a8c29a18a1275b7c302dc2b46f32796d",
+				"dweb:/ipfs/QmT4P7KAPG1BBHWruLReDW7rJwVmMMy2SnhNgQgn8en4vd"
 			]
 		},
 		"contracts/LogSmartContract.sol": {
-			"keccak256": "0x1aee2057ed2f3c4c507b155d2e800d9baed12a0824e5d23558e06ff0b0874d84",
+			"keccak256": "0x68f94eaf319333f92eaa6292f768b2073e0d394d3f5d8452b24c0418e7b24954",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://093b89b855935a0705e1f0589d7d7e16026756ca117b09f2edfce5a31446d3d3",
-				"dweb:/ipfs/QmZ18BpQJTFsiqXL8gr8HVywsr3xWwKLriDG5KiGS21LWy"
+				"bzz-raw://43f9a82ffc7189b51a6e9ffaf4faf977afbbe8e152ec156cc7db5725026ecf72",
+				"dweb:/ipfs/QmVJRCyU671HAPhMbp2kHtuNVAC9F5p7kyhjHGkifaKSef"
 			]
 		}
 	},

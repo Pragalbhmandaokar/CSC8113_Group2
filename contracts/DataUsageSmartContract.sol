@@ -6,13 +6,19 @@ import "./AccessControl.sol";
 contract DataUsageSmartContract is AccessControl {
     
     // Struct
+    enum Operation{
+        read,
+        write,
+        transaction
+    }
+    
     struct DataUsage {
         string serviceName;
         string servicePurpose;
         uint actorId;                       // associated with the actor
-        string[] operations;                //  == "read", "write", "transfer"(multiple)
-        uint[] personalDataIds;             // associated with proccessedPersonalData(byte32)
-        bytes32[] processedPersonalDatas;
+        Operation operations;                //  == "read", "write", "transfer"(multiple)
+        uint personalDataIds;             // associated with proccessedPersonalData(byte32)
+        bytes32 processedPersonalDatas;
     }
 
     struct PersonalData {
@@ -20,102 +26,54 @@ contract DataUsageSmartContract is AccessControl {
         string userName;
         string userAddress;
         string userTelephone;
-        string[] additionalInfos;
     }
     
     // Mapping
-
-    mapping(uint => DataUsage) private dataUsages;              // mapping dataUsages <uint dataUsageId, DataUsage theDataUsage>
-    mapping(uint => PersonalData) private personalDatas;        // mapping personalDatas <uint personalDataId, PersonalData thePersonalData>
-    mapping(uint => bytes32) private processedPersonalDatas;    // mapping processedPersonalDatas <uint personalDataId, byte32 theProcessedPersonalData>
-
+     mapping(uint => DataUsage) private dataUsages;              // mapping dataUsages <uint dataUsageId, DataUsage theDataUsage>
+    // mapping(bytes32 => DataUsage) public mapHashedDataUsage;
     // Store Key of Mappings
     
     uint private dataUsageCounter = 0;
     uint[] private actorIds;
     uint private personalDataCounter = 0;
-
     
-    // Function
-
+    // event emitProcessorPersonalData(bytes32 processPersonalData);
     // ------ mapping : personalDatas ---- : add\get PersonalData functions are "public onlyOwner", getCounter function is "public view"
     function addPersonalData(
         uint _userId,
         string memory  _userName,
-        string memory _userAddress,
-        string memory  _userTelephone,
-        string[] memory additionalInfos
-    ) public onlyOwner {
-        personalDatas[_userId] = PersonalData({
-            userId: _userId,
-            userName: _userName,
-            userAddress: _userAddress,
-            userTelephone: _userTelephone,
-            additionalInfos: additionalInfos
-        });
-        personalDataCounter++;
+        string memory  _userAddress,
+        string memory  _userTelephone
+    ) public pure returns (bytes32) {
+         // Initialize a variable to concatenate the personal data fields
+        bytes memory dataToHash;
+
+        dataToHash = abi.encodePacked(
+            _userId,
+            _userName,
+            _userAddress,
+            _userTelephone
+        );
+   
+        // Generate the hash of the concatenated data 
+        bytes32 processedPersonalData = keccak256(dataToHash);
+        return processedPersonalData;
     }
 
-    function getPersonalDataByKey(uint _personalDataId) public view returns (PersonalData memory) {
-         require(personalDatas[_personalDataId].userId != 0, "PersonalData does not exist.");
-        return personalDatas[_personalDataId];
-    }
-
+    
     function getPersonalDataCounter() public view returns (uint) {
         return personalDataCounter;
     }
-
-    // ------ mapping : processedPersonalDatas ---- : add function is "public onlyOwner", get functions are "public view"
-    function addProcessedPersonalData(uint _personalDataId) public onlyOwner {
-        // Ensure that the personal data exists
-        //require(_personalDataId < personalDataCounter, "PersonalData does not exist.");
-    
-        // Retrieve the personal data
-        PersonalData storage personalData = personalDatas[_personalDataId];
-    
-        // Initialize a variable to concatenate the personal data fields
-        bytes memory dataToHash;
-
-         // Concatenate non-array fields
-        dataToHash = abi.encodePacked(
-            personalData.userName,
-            personalData.userAddress,
-            personalData.userTelephone
-        );
-    
-        // Iterate over the additionalInfos array and concatenate its contents
-        for (uint i = 0; i < personalData.additionalInfos.length; i++) {
-            dataToHash = abi.encodePacked(dataToHash, personalData.additionalInfos[i]);
-        }
-
-        // Generate the hash of the concatenated data 
-        bytes32 processedPersonalData = keccak256(dataToHash);
-
-        // Create a mapping from the personalDataId to the hashed data
-        processedPersonalDatas[_personalDataId] = processedPersonalData;   
-    }
-
-    function getProcessedPersonalDataByKey(uint _personalDataId) public view returns (bytes32) {
-        // require(processedPersonalDatas[_personalDataId] < personalDataCounter, "ProcessedPersonalData does not exist.");
-        return processedPersonalDatas[_personalDataId];
-    }
-
 
     // ------ mapping : dataUsages ---- : add function is "public onlyOwner", get functions are "public view"
     function addDataUsage(
         string memory _serviceName,
         string memory _servicePurpose,
         uint _actorId,
-        string[] memory _operations,
-        uint[] memory _personalDataIds
+        Operation _operations,
+        uint _personalDataIds,
+        bytes32 _proceedPersonalData
     ) public onlyOwner {
-      
-        bytes32[] memory processedDatas = new bytes32[](_personalDataIds.length);
-        
-        for (uint i = 0; i < _personalDataIds.length; i++) {
-            // require(_personalDataIds[i] < personalDataCounter, "PersonalData does not exist.");
-            processedDatas[i] = getProcessedPersonalDataByKey(_personalDataIds[i]);
-        }
 
         // Add the new DataUsage with the processedPersonalDatas included
         dataUsages[_actorId] = DataUsage({
@@ -124,7 +82,7 @@ contract DataUsageSmartContract is AccessControl {
             actorId: _actorId,
             operations: _operations,
             personalDataIds: _personalDataIds,
-            processedPersonalDatas: processedDatas
+            processedPersonalDatas: _proceedPersonalData
         });
 
         // Update the counter for the data usage
@@ -134,7 +92,6 @@ contract DataUsageSmartContract is AccessControl {
 
 
     function getDataUsageByKey(uint _actorConsentId) public view returns (DataUsage memory) {
-        require(dataUsages[_actorConsentId].actorId != 0, "Data User does not exist.");
         return dataUsages[_actorConsentId];
     }
 

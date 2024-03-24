@@ -7,7 +7,7 @@
 		"abi": [
 			{
 				"inputs": [],
-				"name": "beforeAll",
+				"name": "beforeEach",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -21,14 +21,14 @@
 			},
 			{
 				"inputs": [],
-				"name": "testGetLogCounter",
+				"name": "testLogCounter",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
 				"inputs": [],
-				"name": "testGetLogKeys",
+				"name": "testLogKeys",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -47,7 +47,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"tests/AgreementTest.sol": "LogSmartContractTest"
+			"tests/LogSmartContract_test.sol": "LogSmartContractTest"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -70,19 +70,19 @@
 			]
 		},
 		"contracts/DataUsageSmartContract.sol": {
-			"keccak256": "0xe4f195c262cb6862cf96b229f31386bd068f30200971c817297623ecf199cb6c",
+			"keccak256": "0x8a9beaf94c07f37297b2a22232e7c38661ba1938d03d22a3eb87677129272b4d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://30617dcbcb478bc8774ffa201d2063e379ec6632ff5431d814306e2379883571",
-				"dweb:/ipfs/QmNi9GAmSp3CqEX34ZJ5kUA8zy6NYPmSwWoueRv5qRPTjT"
+				"bzz-raw://e49a782445f4ccdaafcc3e19aa69a0530a1da71565277277fb4fad2a4828f0de",
+				"dweb:/ipfs/QmZXoe4f6h9BAzLZP19gLj2DbjxhppXwG4aPdjJssSKv2n"
 			]
 		},
 		"contracts/LogSmartContract.sol": {
-			"keccak256": "0xd51fb01a652e5fa0cb738dde271677f53d87f8d71d29ee22a5f40dedb1c765b6",
+			"keccak256": "0x6dbb6fda227a0903b928ac84ea0e3057031c40ab5b1ae5780c9c94d9dcde0d90",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://4a14b5a606a5d09b173f019da024ddd1fa728eaf6559e4f746a6472466ad0dfa",
-				"dweb:/ipfs/Qmb1hJmA38M21aXBSVE2PVXWiiUARmG5rHfWvrEJFiN5Jh"
+				"bzz-raw://54d92f587c57b6336980fdfdacb4787cfc05161f8fa88741735deb718cd1f987",
+				"dweb:/ipfs/QmcXZAvoRe1HSGXt1asauhsjPEMZyWNJu1Yrs5tFXCYp8a"
 			]
 		},
 		"remix_tests.sol": {
@@ -93,12 +93,12 @@
 				"dweb:/ipfs/QmdkW1tT5iadBvaHMCoskhDGZKnfdg8o1D9CcoQYtdJet7"
 			]
 		},
-		"tests/AgreementTest.sol": {
-			"keccak256": "0xb36195e731c4b4c3af5962411ed7c14ca4a2bd3fe6df06b08eaab9d744238959",
+		"tests/LogSmartContract_test.sol": {
+			"keccak256": "0xc5c0e93aff7e97004207684694dff0879d788bd4ab5674ff4b46924204b660b7",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://c1d63a49aafb6dbf39c46d98a5627d3f41f06e09476ef3f1915691a82d88e1e9",
-				"dweb:/ipfs/QmcQ7itnCyT4hkatmmr9QyDzMXxjdcbg1cDhG1EbpWvfa6"
+				"bzz-raw://26e35129b6be2d60ed6d43de8dcf98a62953c281c318adbc76b4dc9088f3bc8a",
+				"dweb:/ipfs/QmWAW9v2oadAt8hjv5TZk2rzsf9jiaomcUXR8UcZ7AzZg1"
 			]
 		}
 	},
