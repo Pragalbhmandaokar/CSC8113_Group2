@@ -20,7 +20,8 @@ contract AccessControl {
 // File: contracts/DataUsageSmartContract.sol
 
 
-pragma solidity ^0.8.10;
+pragma solidity ^0.8.10;
+
 
 contract DataUsageSmartContract is AccessControl {
 
